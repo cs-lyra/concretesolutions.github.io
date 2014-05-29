@@ -88,11 +88,12 @@
 	    }
 		});
 
-		$("#carousel-example-generic").on("swipeleft",function(event){
-			this.carousel('next');
-		});
-		$("#carousel-example-generic").on("swiperight",function(event){
-			this.carousel('prev');
+		$(".JS-swipe")
+		.on("swipeleft",function(event){
+			$("#carousel-example-generic").carousel('next');
+		})
+		.on("swiperight",function(event){
+			$("#carousel-example-generic").carousel('prev');
 		});
 		{% endif %}
 
