@@ -67,7 +67,7 @@
 	<script src="js/vendor/bootstrap.min-3.1.1.js"></script>
 	<script src="js/vendor/jquery.fittext-1.2.js"></script>
 	<script src="js/vendor/jquery.rss.min-1.4.1.js"></script>
-	<script src="js/vendor/jgestures.min-0.90.js"></script>
+	<script src="js/vendor/jquery.touchswipe.min-1.6.5.js"></script>
 	<script src="js/mailchimp.js"></script>
 	<script src="js/concrete.js"></script>
 	<script type="text/javascript">
@@ -87,12 +87,22 @@
 	        }
 	    }
 		});
-
+	
 		$(document).ready(function() {  
-	  		 $("#carousel-example-generic")
-	  		 .bind('swipeleft',function(){this.carousel('next');})
-	  		 .bind('swiperight',function(){this.carousel('prev');});
-	   	});    
+			//Enable swiping...
+			$(".carousel-inner").swipe( {
+				//Generic swipe handler for all directions
+				swipeLeft:function(event, direction, distance, duration, fingerCount) {
+					$(this).parent().carousel('prev'); 
+				},
+				swipeRight: function() {
+					$(this).parent().carousel('next'); 
+				},
+				//Default is 75px, set to 0 for demo so any distance triggers swipe
+				threshold:0
+			});
+		});
+	
 		{% endif %}
 
 	</script>
