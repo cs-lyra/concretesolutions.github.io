@@ -62,6 +62,7 @@
 	<script type="text/javascript">
 		$(".text1").fitText(2.0);
 		$(".text2").fitText(2.6);
+		{% if page.is_index == true %}
 		$("#blog-content").rss("http://blog.concretesolutions.com.br/feed/atom/", {
 	    limit: 2,
 	    layoutTemplate: '<div>{entries}</div>',
@@ -73,6 +74,7 @@
 	        }
 	    }
 		});
+		{% endif %}
 	</script>
 </body>
 </html>
