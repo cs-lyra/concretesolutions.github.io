@@ -126,20 +126,21 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 .box-content .social-media-footer li .google{ background-position: -115px 0;}
 .box-content .social-media-footer li .linkedin{ background-position: -175px 0;}
 .box-content .social-media-footer li .youtube{ background-position: -230px 0;}
-#form-newsletter {position: relative; margin: 0px;}
-#form-newsletter input{ padding: 15px 10px; width: 100%; color: #838181;}
-#form-newsletter .send {
-	position: absolute;
-	right: 5px;
-	top: 10px;
+
+.newsletter form{position: relative; margin: 0px;}
+.newsletter form input{ padding: 15px 10px; width: 100%; color: #838181;}
+.newsletter form .send {
+position: absolute;
+right: 5px;
+top: 10px;
 }
-.send {
-	background: url("../img/ico-mail.png") no-repeat 0 0 scroll;
-	text-shadow: none;
-	background-color: #fff;
-	border: 0 none;
-	height: 34px;
-	width: 34px;
+.newsletter form .send {
+background: url("../img/ico-mail.png") no-repeat 0 0 scroll;
+text-shadow: none;
+background-color: #fff;
+border: 0 none;
+height: 34px;
+width: 34px;
 }
 .copyright{padding-right: 15px; padding-top: 15px;}
 
