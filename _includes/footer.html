@@ -57,10 +57,22 @@
 	<script src="js/vendor/jquery.min-1.11.0"></script>
 	<script src="js/vendor/bootstrap.min-3.1.1.js"></script>
 	<script src="js/vendor/jquery.fittext-1.2.js"></script>
+	<script src="js/vendor/jquery.rss-1.4.1.js"></script>
 	<script src="js/concrete.js"></script>
 	<script type="text/javascript">
 		$(".text1").fitText(2.0);
 		$(".text2").fitText(2.6);
+		$("#blog-content").rss("http://blog.concretesolutions.com.br/feed/atom/", {
+	    limit: 2,
+	    layoutTemplate: '<div>{entries}</div>',
+	    entryTemplate: '<div class="col-md-6 post"><header><h2 class="title-post">{title}</h2><h6 class="author-post">Por: {author} {formattedDate}</h6></header><a href="#" class="img-post"><img src="{teaserImageUrl}" class="img-responsive" style="width:500px;height:244px"></a><p>{shortBody}</p><a href="{url}" target="_blank" class="btn-read">Ler mais</a></div>',
+	    tokens: {
+	        formattedDate: function (entry, tokens) {
+	            var date = new Date(entry.publishedDate);
+	            return date.toLocaleDateString("pt-BR");
+	        }
+	    }
+		});
 	</script>
 </body>
 </html>
