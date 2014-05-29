@@ -1,4 +1,5 @@
 var fnames = new Array();var ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';
+try {    
     var jqueryLoaded=jQuery;
     jqueryLoaded=true;
 } catch(err) {
