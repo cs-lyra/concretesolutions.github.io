@@ -65,7 +65,7 @@
 		$("#blog-content").rss("http://blog.concretesolutions.com.br/feed/atom/", {
 	    limit: 2,
 	    layoutTemplate: '<div>{entries}</div>',
-	    entryTemplate: '<div class="col-md-6 post"><header><h2 class="title-post">{title}</h2><h6 class="author-post">Por: {author} {formattedDate}</h6></header><a href="#" class="img-post"><img src="{teaserImageUrl}" class="img-responsive" style="width:500px;height:244px"></a><p>{shortBody}</p><a href="{url}" target="_blank" class="btn-read">Ler mais</a></div>',
+	    entryTemplate: '<div class="col-md-6 post"><header><h2 class="title-post">{title}</h2><h6 class="author-post">Por: {author} {formattedDate}</h6></header><a href="{url}" class="img-post"><img src="{teaserImageUrl}" class="img-responsive" style="width:500px;height:244px"></a><p>{shortBody}</p><a href="{url}" target="_blank" class="btn-read">Ler mais</a></div>',
 	    tokens: {
 	        formattedDate: function (entry, tokens) {
 	            var date = new Date(entry.publishedDate);
