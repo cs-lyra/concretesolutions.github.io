@@ -22,6 +22,20 @@ $(document).ready(function() {
     $(".info.erro").hide();
   });
 
+  // Tooltip
+    $('.tooltip-1').tooltip('hide');
+    $('.tooltip-2').tooltip('hide');
+    $('.tooltip-3').tooltip('hide');
+    $('.tooltip-4').tooltip('hide');
+    $('.tooltip-5').tooltip('hide');
+    $('.tooltip-6').tooltip('hide');
+    $('.tooltip-7').tooltip('hide');
+    $('.tooltip-8').tooltip('hide');
+  
+  //fitText
+    $(".text1").fitText(2.0);
+    $(".text2").fitText(2.6);
+
   // $('body').scrollspy({ target: '#secondary-menu' })
 
   // //scroll menusecondary
