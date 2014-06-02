@@ -15,7 +15,7 @@ function GCalEvents(gcal_json_url) {
                 var event_title = item.title.$t;
                 
 
-                var event_link = item.link[0].href;
+                var event_link = item.content.$t;
 
                 // event start date/time
                 var event_start_date = new Date(item.gd$when[0].startTime);
@@ -38,8 +38,12 @@ function GCalEvents(gcal_json_url) {
                 
                 // Render the event
                 jQuery("#JS-gcal-events li").last().before(
-                    "<li><a href='"+ event_link + "'><span class='bold'>"+ event_date + "</span> //" + event_title + "</a></li>"
+                    "<li><a href='"+ event_link + "' target='_blank'><span class='bold'>"+ event_date + "</span> //" + event_title + "</a></li>"
                 );
             });
         });
     }
+
+
+
+<a href="https://eventioz.com.br/e/mobile-commerce-como-aprender-medir-e-converter?from_button=yes&source=orevib&utm_campaign=or_mobile-commerce-como-aprender-medir-e-converter&utm_content=integrated_button&utm_medium=integration_tool&utm_source=eventioz" target="_blank"><img src="https://eventioz.com.br/e/mobile-commerce-como-aprender-medir-e-converter/promotion_button.png?size=small&content=Inscrever-se+agora&from=99eb24&to=3c7f05&font=333333" alt="Eventioz - mobile-commerce-como-aprender-medir-e-converter"></a>
