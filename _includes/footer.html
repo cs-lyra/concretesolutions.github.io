@@ -22,7 +22,8 @@
 				</div>
 				<div class="col-md-4 box-content">
 					<h4>Eventos</h4>
-					<ul>
+					<ul id="JS-gcal-events">
+						<li>Nenhum evento =(</li>
 						<li><a href="https://aws.amazon.com/pt/aws-summit-2014/sao-paulo/" target="_blank"><span class="bold">27-05-14 //</span> AWS Summit.</a></li>
 						<li><a ><span class="bold">05-06-14 //</span> Coders on Beer SP - Product Discovery.</a></li>
 						<li><a href="http://www.itforummais.com.br/" target="_blank"><span class="bold">27 à 31-08-14//</span> IT Fórum.</a></li>
@@ -68,9 +69,12 @@
 	<script src="js/vendor/jquery.fittext-1.2.js"></script>
 	<script src="js/vendor/jquery.rss.min-1.4.1.js"></script>
 	<script src="js/vendor/jquery.touchswipe.min-1.6.5.js"></script>
+	<script src="js/GCalEvents.js"></script>
 	<script src="js/mailchimp.js"></script>
 	<script src="js/concrete.js"></script>
-	<script type="text/javascript">
+	
+	<script type="text/javascript" charset="utf-8">
+		var calendar_json_url = "https://www.google.com/calendar/feeds/concretesolutions.com.br_k3ja6rfulbk38j40n74r86qq98@group.calendar.google.com/public/full?orderby=starttime&sortorder=ascending&max-results=5&futureevents=true&alt=json";
 
 		$(".text1").fitText(2.0);
 		$(".text2").fitText(2.6);
@@ -89,6 +93,8 @@
 		});
 	
 		$(document).ready(function() {  
+			GCalEvents(calendar_json_url);
+
 			//Enable swiping...
 			$(".carousel-inner").swipe( {
 				//Generic swipe handler for all directions
