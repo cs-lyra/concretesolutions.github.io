@@ -35,7 +35,6 @@ embed,
 object,
 video {
     max-width: 100%;
-    max-height: 90%;
 }
 
 /*-------------------GLOBAL STYLE------------------------*/
@@ -80,6 +79,11 @@ body {font-family: 'Open Sans', sans-serif !important; font-size: 14px !importan
 .border-right{border-right: 1px solid #cecece !important;}
 .row{padding: 0 !important; margin: 0 !important;}
 .no-border{border: 0 !important;}
+
+.intro,
+.intro-who-we-are,
+.intro-what-we-do,
+.intro-jobs{position: relative; background-attachment: fixed;}
 
 /*-------------------HEADER------------------------*/
 .navbar{margin-bottom: 20px !important; position: relative; z-index: 90;}
