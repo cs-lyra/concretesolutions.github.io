@@ -22,16 +22,20 @@ $(document).ready(function() {
     $(".info.erro").hide();
   });
 
-  // Tooltip
-    $('.tooltip-1').tooltip('hide');
-    $('.tooltip-2').tooltip('hide');
-    $('.tooltip-3').tooltip('hide');
-    $('.tooltip-4').tooltip('hide');
-    $('.tooltip-5').tooltip('hide');
-    $('.tooltip-6').tooltip('hide');
-    $('.tooltip-7').tooltip('hide');
-    $('.tooltip-8').tooltip('hide');
+  // popover
+  $('[data-toggle="popover"]').popover();
+
+  $('body').on('click', function (e) {
+      $('[data-toggle="popover"]').each(function () {
+          //the 'is' for buttons that trigger popups
+          //the 'has' for icons within a button that triggers a popup
+          if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+              $(this).popover('hide');
+          }
+      });
+  });
   
+    
   //fitText
     $(".text1").fitText(2.0);
     $(".text2").fitText(2.6);
