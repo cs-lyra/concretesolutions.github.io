@@ -22,23 +22,23 @@ function GCalEvents(gcal_json_url) {
                 var event_end_date = new Date(item.gd$when[0].endTime);
                 var event_date;
                 
-                if(event_start_date.getDay() === event_end_date.getDay() && event_start_date.getMonth() === event_end_date.getMonth() && event_start_date.getFullYear() === event_end_date.getFullYear()) {
+                if(event_start_date.getDate() === event_end_date.getDate() && event_start_date.getMonth() === event_end_date.getMonth() && event_start_date.getFullYear() === event_end_date.getFullYear()) {
                     // XX/XX/XXXX
-                    event_date = event_start_date.getDay()+"/"+event_start_date.getMonth()+"/"+event_start_date.getFullYear();  
-                } else if (event_start_date.getDay() != event_end_date.getDay() && event_start_date.getMonth() === event_end_date.getMonth() && event_start_date.getFullYear() === event_end_date.getFullYear()) {
+                    event_date = event_start_date.getDate()+"-"+(event_start_date.getMonth()+1)+"-"+event_start_date.getFullYear();  
+                } else if (event_start_date.getDate() != event_end_date.getDate() && event_start_date.getMonth() === event_end_date.getMonth() && event_start_date.getFullYear() === event_end_date.getFullYear()) {
                     // xx à XX/XX/XXXX
-                    event_date =  event_start_date.getDay()+ " à " + event_end_date.getDay()+"/"+event_end_date.getMonth()+"/"+event_end_date.getFullYear();
+                    event_date =  event_start_date.getDate()+ " à " + event_end_date.getDate()+"-"+(event_end_date.getMonth()+1)+"-"+event_end_date.getFullYear();
                 } else if (event_start_date.getMonth() != event_end_date.getMonth() && event_start_date.getFullYear() === event_end_date.getFullYear()) {
                     // xx/XX à XX/XX/XXXX
-                    event_date = event_start_date.getDay()+"/"+event_start_date.getMonth()+ " à " + event_end_date.getDay()+"/"+event_end_date.getMonth()+"/"+event_end_date.getFullYear();
+                    event_date = event_start_date.getDate()+"-"+event_start_date.getMonth()+ " à " + event_end_date.getDate()+"-"+(event_end_date.getMonth()+1)+"-"+event_end_date.getFullYear();
                 }else if (event_start_date.getFullYear() != event_end_date.getFullYear()) {
                     // XX/xx/XX à XX/XX/XXXX
-                    event_date = event_start_date.getDay()+"/"+event_start_date.getMonth()+"/"+event_start_date.getFullYear()+ " à " + event_end_date.getDay()+"/"+event_end_date.getMonth()+"/"+event_end_date.getFullYear();
+                    event_date = event_start_date.getDate()+"-"+(event_start_date.getMonth()+1)+"-"+event_start_date.getFullYear()+ " à " + event_end_date.getDate()+"-"+(event_end_date.getMonth()+1)+"-"+event_end_date.getFullYear();
                 }
                 
                 // Render the event
                 jQuery("#JS-gcal-events li").last().before(
-                    "<li> "+ event_date + " // <a href='"+ event_link + "'>" + event_title + "</a></li>"
+                    "<li><a href='"+ event_link + "'><span class='bold'>"+ event_date + "</span> //" + event_title + "</a></li>"
                 );
             });
         });
