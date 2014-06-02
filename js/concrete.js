@@ -23,14 +23,14 @@ $(document).ready(function() {
   });
 
   // Tooltip
-    $('.tooltip-1').tooltip('hide');
-    $('.tooltip-2').tooltip('hide');
-    $('.tooltip-3').tooltip('hide');
-    $('.tooltip-4').tooltip('hide');
-    $('.tooltip-5').tooltip('hide');
-    $('.tooltip-6').tooltip('hide');
-    $('.tooltip-7').tooltip('hide');
-    $('.tooltip-8').tooltip('hide');
+    $('.tooltip-1').popover('hide');
+    $('.tooltip-2').popover('hide');
+    $('.tooltip-3').popover('hide');
+    $('.tooltip-4').popover('hide');
+    $('.tooltip-5').popover('hide');
+    $('.tooltip-6').popover('hide');
+    $('.tooltip-7').popover('hide');
+    $('.tooltip-8').popover('hide');
   
   //fitText
     $(".text1").fitText(2.0);
