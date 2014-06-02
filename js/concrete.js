@@ -34,7 +34,7 @@ $(document).ready(function() {
           }
       });
   });
-  
+
     
   //fitText
     $(".text1").fitText(2.0);
@@ -45,10 +45,6 @@ $(document).ready(function() {
   // //scroll menusecondary
   // var nav = $('#secondary-menu');
   // $(window).scroll(function () { if ($(this).scrollTop() > 100) { nav.addClass("f-nav"); } else { nav.removeClass("f-nav"); } });
-
-}); 
-
-
 
 var divs = $('.hero-content, .hero-paragraph');
 $(window).on('scroll', function() {
