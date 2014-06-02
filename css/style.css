@@ -30,10 +30,17 @@ a {text-decoration:none; }
        -moz-box-sizing: border-box;
             box-sizing: border-box;
 }
+img,
+embed,
+object,
+video {
+    max-width: 100%;
+    max-height: 90%;
+}
 
 /*-------------------GLOBAL STYLE------------------------*/
 /* Move down content because we have a fixed navbar that is 50px tall */
-body {padding-top: 80px;}
+body {padding-top: 90px;}
 body {font-family: 'Open Sans', sans-serif !important; font-size: 14px !important; color: #000 !important; }
 .hero-content {font-family:"Oswald"; position: relative; z-index: 1000; margin-top: 110px; margin-bottom: 110px;}
 .box{padding: 30px 0;}
@@ -67,11 +74,12 @@ body {font-family: 'Open Sans', sans-serif !important; font-size: 14px !importan
 .bold{font-weight: 700;}
 .box-color{background-color: #eee;}
 .erro{color:#ED1C24; margin:0}
-.ok{color:green; margin:0}
+.ok{color:#7a68ae; margin:0; text-shadow: #000;}
 .border{border-right: 1px solid #000; height: 180px;}
 .center{text-align: center; padding-top: 20px;}
 .border-right{border-right: 1px solid #cecece !important;}
 .row{padding: 0 !important; margin: 0 !important;}
+.no-border{border: 0 !important;}
 
 /*-------------------HEADER------------------------*/
 .navbar{margin-bottom: 20px !important; position: relative; z-index: 90;}
@@ -82,7 +90,7 @@ body {font-family: 'Open Sans', sans-serif !important; font-size: 14px !importan
 .navbar-brand {margin-left: 0 !important; padding-top: 30px !important;}
 .navbar-toggle {margin-top: 30px !important;}
 .navbar-inverse .navbar-nav>.active>a{ background-color: #424243 !important;}
-.navbar-inverse{background-color: rgba(0,0,0,0.9) !important;}
+.navbar-inverse{background-color: #000 !important;}
 
 /*-------------------CALL ACTION------------------------*/
 #call-action {text-align:center; background-color: #7a68ae; padding:30px 0 20px 0; text-align: center; }
@@ -126,21 +134,20 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 .box-content .social-media-footer li .google{ background-position: -115px 0;}
 .box-content .social-media-footer li .linkedin{ background-position: -175px 0;}
 .box-content .social-media-footer li .youtube{ background-position: -230px 0;}
-
 .newsletter form{position: relative; margin: 0px;}
 .newsletter form input{ padding: 15px 10px; width: 100%; color: #838181;}
 .newsletter form .send {
-position: absolute;
-right: 5px;
-top: 10px;
+	position: absolute;
+	right: 5px;
+	top: 10px;
 }
 .newsletter form .send {
-background: url("../img/ico-mail.png") no-repeat 0 0 scroll;
-text-shadow: none;
-background-color: #fff;
-border: 0 none;
-height: 34px;
-width: 34px;
+	background: url("../img/ico-mail.png") no-repeat 0 0 scroll;
+	text-shadow: none;
+	background-color: #fff;
+	border: 0 none;
+	height: 34px;
+	width: 34px;
 }
 .copyright{padding-right: 15px; padding-top: 15px;}
 
@@ -201,7 +208,7 @@ width: 34px;
 	width: 68%;
 }
 .carousel-caption h3{font-family: "Oswald"; font-size: 30px; font-weight: 300; text-transform: uppercase;}
-.carousel-caption p{font-size: 14px; text-align: left;}
+.carousel-caption p{font-size: 14px; text-align: center;}
 .carousel-control {
 	top: 0;
 	left: 0;
@@ -235,9 +242,10 @@ width: 34px;
 .img-post{
 	display: block;
 	margin-bottom: 15px;
-	max-height: 244px;
+	width: 540px;
+	height: 240px;
 }
-.post p{font-weight: 300; width: 75%; display: inline-block; vertical-align: top; text-align: left; margin-right: 15px;}
+.post p{font-weight: 300; width: 84%; display: inline-block; vertical-align: top; text-align: left; margin-right: 15px; text-align: justify;}
 
 /*-------------------NEWS------------------------*/
 #news header{margin-bottom: 40px;}
@@ -293,12 +301,12 @@ width: 34px;
 .spotlight h2{font-family: "Oswald"; font-size: 40px; font-weight: 300; display: inline-block;}
 .decor-3{background: url("../img/decor-3.png") no-repeat 0 0 scroll; width: 95px; height: 82px; display: inline-block; margin-right: 10px;}
 .about{margin-top: 30px;}
-.about p{font-size: 24px; font-weight: 300; line-height: 1.6;}
+.about p{font-size: 24px; font-weight: 300; line-height: 1.6; text-align: justify;}
 
 /*-------------------MAP--------------------------*/
 .map{
 	margin-top: 60px;
-	background: url("../img/map.png") no-repeat left top scroll;
+	background: url("../img/map.png") no-repeat center top scroll;
 	height:98%;
 	width: 100%;
 	-webkit-background-size: cover;
@@ -307,26 +315,35 @@ width: 34px;
 	background-size: cover;
 	padding-bottom: 32px;
 }
-.map ul{position: relative; width: 100%; height: 665px;}
-.map ul li{position:absolute;}
-.map ul .nota1{top:0; left:0;}
-.map ul .nota2{top:0; left:40%;}
-.map ul .nota3{top:51%; left:23%;}
-.map ul .nota4{top:70%; left:37%;}
-.map ul .nota5{top:42%; left:57%;}
-.map ul .nota6{top:27%; left:35%;}
-.map ul .nota7{top:13%; left:61%;}
+.points ul{position: relative; width: 100%; height: 665px;}
+.points ul li{position:absolute;}
+.points ul .nota1{top:0; left:0;}
+.points ul .nota2{top:0; left:40%;}
+.points ul .nota3{top:51%; left:23%;}
+.points ul .nota4{top:70%; left:37%;}
+.points ul .nota5{top:42%; left:57%;}
+.points ul .nota6{top:27%; left:35%;}
+.points ul .nota7{top:13%; left:61%;}
+
+
+.map .text-points{ display: block; width: 50%; display: none;}
+.map .text-points li{ padding: 10px; width: auto; background-color:#7a68ae; font-size: 14px; margin: 5px 0; color: #fff; clear: both; list-style-type: square; list-style-position: inside;}
 /*-------------------MOONLIGHT--------------------*/
 .content-moonlight{margin-top: 50px;}
-#moonlight p{font-size: 20px; font-weight: 300; line-height: 1.6;}
+#moonlight p{font-size: 20px; font-weight: 300; line-height: 1.6; text-align: justify;}
 #moonlight img{margin-bottom: 30px; float: right;}
-.fix{padding: 0 25px 0 0; float: left;}
-.cloud{float: left; clear: both;}
+.space{padding-left: 5% !important;}
+.fix{padding: 0 0 0 35px; display: inline-block; clear: both;}
+.cloud{display: inline-block; clear: both;}
+
+/*-------------------TEAM--------------------*/
 .team{display: block;}
 .team li{display: inline-block; padding: 50px 50px 0 50px;}
-.team li a:hover img{opacity: 0.5;}
+.team li a:hover img{opacity: 0.5; cursor: pointer;}
 .team li h3{font-family: "Oswald"; font-size: 18px; text-transform: uppercase; text-align: center;}
 .team li h6{font-weight: 300px; font-style: italic; font-size: 12px; text-transform: uppercase; text-align: center;}
+.popover{color: #fff !important; text-align: justify !important;  font-size: 14px; font-weight: 300; padding: 10px 5px !important; max-width: 350px !important; background-color: #000 !important;}
+.popover.bottom>.arrow:after {border-bottom-color: #000 !important;}
 
 /*-----------------------------------------------*/
 
@@ -399,18 +416,15 @@ width: 34px;
 #what-we-do .title-service{font-family: "Oswald", sans-serif; font-size: 36px; margin: 30px auto;}
 #what-we-do .img-service{margin: 80px auto 30px auto;}
 #what-we-do .text-service{font-size: 16px; line-height: 1.6; text-align: justify; margin: 40px auto;}
-#services {margin-bottom: 30px; background-color: #fff;}
+#services {margin-bottom: 30px; background-color: #fff; border: 1px solid #cecece;}
 .box-service {
 	padding: 20px;
 	height: 100%;
 	min-height: 280px !important;
-	border: 1px solid #cecece;
-	border-right: 0px;
-	/*border: 1px solid #d8d9db;*/
+	border-right: 1px solid #cecece;
 }
 .box-service img {
 	margin-top: 20px;
-	margin-left: 45%;
 }
 .box-service h3 {
 	font-family: "Oswald", sans-serif;
@@ -446,10 +460,10 @@ width: 34px;
 /*-------------------CLIENTS------------------*/
 
 /*-----------------------------------------------*/
-
-
+#clients{margin-top: 30px;}
 #clients #secondary-menu{background-color: #eee; margin-top:20px;}
-
+#secondary-menu .navbar-link{padding-top: 0px !important;}
+#secondary-menu .navbar-nav li:hover a{background-color: #fff !important; cursor: pointer;}
 #clients .nav>li>a {
 	text-transform: uppercase;
 	position: relative;
@@ -463,7 +477,6 @@ width: 34px;
 	-moz-backface-visibility: hidden;
 	-ms-backface-visibility: hidden;
 	transition: all 0.2s ease-out;
-	text-decoration: underline;
 }
 #clients .nav-pills>li>a:hover{
 	background-color:#535252;
@@ -479,19 +492,46 @@ width: 34px;
 #clients .logo{padding-right: 10px; float: right;}
 #clients .img-responsive{display: inline !important;}
 #clients h2{font-family: "Oswald", sans-serif; font-size: 32px; font-weight: 300; padding:50px 0 30px 0; display: inline-block;}
-#clients .logo{margin-bottom: 30px; padding-left: 88%;}
+#clients .logo{margin-bottom: 30px;}
 #clients .content-text{font-size: 16px; font-weight: 300; text-align: justify; line-height: 1.8; padding-top: 10px; padding-right: -15px;}
-#clients #industria .logo{padding-left: 90%;}
-#clients #tecnologia .logo{padding-left: 85%;}
 .f-nav { z-index: 9999; position: fixed; top: 70px; width:100%; }
+.logo-clients{float: left; margin-top:30px !important; width: 100%;}
+.logo-clients ul li{ background: url("../img/logos-clientes.png") no-repeat 0 0 scroll; width: 100px; height: 100px; display: inline-block;}
+.logo-clients .client-varejo-1{background-position: 0 0; width: 100px; height: 80px;}
+.logo-clients .client-varejo-2{background-position: -100px 0; width: 300px; height: 80px;}
+.logo-clients .client-varejo-3{background-position: -428px 0; width: 100px; height: 80px;}
+.logo-clients .client-varejo-4{background-position: -590px 0; width: 200px; height: 80px;}
 
+.logo-clients .client-midia-1{background-position: 0 0; width: 100px; height: 80px;}
+.logo-clients .client-midia-2{background-position: -100px 0; width: 300px; height: 80px;}
+.logo-clients .client-midia-3{background-position: -428px 0; width: 100px; height: 80px;}
+.logo-clients .client-midia-4{background-position: -590px 0; width: 200px; height: 80px;}
+
+.logo-clients .client-industria-1{background-position: 0 -90px; width: 100px; height: 110px;}
+.logo-clients .client-industria-2{background-position: -100px -110px; width: 260px; height: 80px;}
+.logo-clients .client-industria-3{background-position: -378px -110px; width: 253px; height: 80px;}
+.logo-clients .client-industria-4{background-position: -631px -105px; width: 300px; height: 100px;}
+
+.logo-clients .client-telecom-1{background-position: 0 -200px; width: 100px; height: 110px;}
+.logo-clients .client-telecom-2{background-position: -175px -233px; width: 190px; height: 70px;}
+.logo-clients .client-telecom-3{background-position: -421px -220px; width: 253px; height: 80px;}
+.logo-clients .client-telecom-4{background-position: -685px -220px; width: 300px; height: 70px;}
+
+.logo-clients .client-tecnologia-1{background-position: 0 -300px; width: 100px; height: 110px;}
+.logo-clients .client-tecnologia-2{background-position: -120px -333px; width: 300px; height: 70px;}
+.logo-clients .client-tecnologia-3{background-position: -421px -310px; width: 220px; height: 95px;}
+.logo-clients .client-tecnologia-4{background-position: -639px -270px; width: 300px; height: 130px;}
+
+.logo-clients .client-servicos-1{background-position: 0 -440px; width: 100px; height: 80px;}
+.logo-clients .client-servicos-2{background-position: -120px -440px; width: 240px; height: 70px;}
+.logo-clients .client-servicos-3{background-position: -381px -430px; width: 200px; height: 75px;}
+.logo-clients .client-servicos-4{background-position: -639px -490px; width: 220px; height: 140px;}
 /*-----------------------------------------------*/
 
 /*--------------------JOBS-----------------------*/
 
 /*-----------------------------------------------*/
 .intro-jobs {
-	padding: 90px 0;
 	height:98%;
 	width: 100%;
 	background: url(../img/business_people.jpg) no-repeat center top scroll;
@@ -500,7 +540,7 @@ width: 34px;
 	-o-background-size: cover;
 	background-size: cover;
 }
-.intro-jobs .hero-content{margin-top: 40px; margin-bottom: 290px;}
+.intro-jobs .hero-content{margin-top: 430px;}
 .intro-jobs .hero-content h1 {
 	font-size: 3.8em;
 	margin-top: 0;
@@ -514,6 +554,7 @@ width: 34px;
 
 
 #jobs .title{margin-bottom: 30px;}
+#jobs .text-carreira {font-size: 18px; line-height: 1.8; padding-bottom: 30px}
 #jobs .secondary-title{padding-left: 20px; font-family: "Oswald", sans-serif; font-size: 30px; margin-bottom: 30px;}
 #jobs .jumbotron{height: 355px; overflow: auto;}
 .jumbotron h2{font-family: "Oswald", sans-serif; font-size: 24px; margin-bottom: 25px;}
@@ -527,7 +568,8 @@ width: 34px;
 /*---------------------CONTATO-------------------*/
 
 /*-----------------------------------------------*/
-.container .jumbotron{margin-top: 30px; margin-bottom: 30px;}
+#contato .container .jumbotron{margin-top: 30px; margin-bottom: 30px;}
+#contato .jumbotron iframe{border: 1px solid #ccc !important; border-radius: 5px;}
 #contato .jumbotron h2{text-transform: uppercase; font-family: "Oswald", sans-serif; font-size: 27px;}
 #contato .mini-contact {
 	padding: 20px 0;
@@ -541,14 +583,30 @@ width: 34px;
 	margin: 0 0 .5em 0;
 	color: #000;
 }
-#contato .mini-contact .mail {font-size:13px; padding-left: 50px; background: url("../img/mail.png") no-repeat 0 0 scroll; width:auto; height: 30px;}
-#contato  .mini-contact .tel {font-size:13px; padding-left: 50px; background: url("../img/phone.png")no-repeat 0 0 scroll; width:auto; height: 30px;}
-#contato  .mini-contact .location {font-size:13px; padding-left: 50px; background: url("../img/at.png") no-repeat 0 0 scroll; width:auto; height: 30px; }
+#contato .mini-contact .mail {font-size:13px; padding-left: 20px; background: url("../img/mail.png") no-repeat 0 center scroll; width:auto; height: auto;}
+#contato  .mini-contact .tel {font-size:13px; padding-left: 20px; background: url("../img/phone.png")no-repeat 0 top scroll; width:auto; height: auto;}
+#contato  .mini-contact .location {font-size:13px; padding-left: 20px; background: url("../img/at.png") no-repeat 0 top scroll; width:auto; height: auto; }
 /*-----------------RESPONSIVE--------------------*/
+@media screen and (max-width: 640px){
+	.map .text-points{ display: block; width: 80%;}
+
+	.map .points{display: none;}
+
+	.map{background: none;}
+}
+@media screen and (max-width: 991px){
+	 #clients .logo-clients ul li {
+		display: block;
+		clear: both;
+	}
+	#who-we-are img{
+		display: none;
+	}
+}
 @media screen and (min-width: 768px){
 	.container .jumbotron {
-		padding-left: 30px !important;
-		padding-right: 30px!important; 
+		padding-left: 20px !important;
+		padding-right: 20px!important; 
 		padding-top: 20px !important;
 		padding-bottom: 20px !important;
 	}

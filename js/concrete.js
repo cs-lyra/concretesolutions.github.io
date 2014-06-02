@@ -22,6 +22,24 @@ $(document).ready(function() {
     $(".info.erro").hide();
   });
 
+  // popover
+  $('[data-toggle="popover"]').popover();
+
+  $('body').on('click', function (e) {
+      $('[data-toggle="popover"]').each(function () {
+          //the 'is' for buttons that trigger popups
+          //the 'has' for icons within a button that triggers a popup
+          if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+              $(this).popover('hide');
+          }
+      });
+  });
+  
+    
+  //fitText
+    $(".text1").fitText(2.0);
+    $(".text2").fitText(2.6);
+
   // $('body').scrollspy({ target: '#secondary-menu' })
 
   // //scroll menusecondary
