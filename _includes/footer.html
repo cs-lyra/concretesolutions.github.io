@@ -36,6 +36,7 @@
 						<li><a class="youtube" href="https://www.youtube.com/user/concretesolutionsbr" target="_blank"></a></li>
 					</ul>
 					<div class="newsletter">
+						<p>Receba nossa newsletter:</p>
 						<form action="http://concretesolutions.us5.list-manage1.com/subscribe/post?u=0dd8265cc74731cec0c149863&amp;id=26dd60f3a9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 							<div class="mc-field-group">
 								<input type="text" name="EMAIL" id="mce-EMAIL" placeholder="seu e-mail" autocomplete="off"> 
@@ -79,22 +80,6 @@
 
 		var calendar_json_url = "https://www.google.com/calendar/feeds/concretesolutions.com.br_k3ja6rfulbk38j40n74r86qq98@group.calendar.google.com/public/full?orderby=starttime&sortorder=ascending&max-results=5&futureevents=true&alt=json";
 
-		$(".text1").fitText(2.0);
-		$(".text2").fitText(2.6);
-
-		{% if page.is_index == true %}
-		$("#blog-content").rss("http://blog.concretesolutions.com.br/feed/atom/", {
-	    limit: 2,
-	    layoutTemplate: '<div>{entries}</div>',
-	    entryTemplate: '<div class="col-md-6 post"><header><h2 class="title-post">{title}</h2><h6 class="author-post">Por: {author} {formattedDate}</h6></header><a href="{url}" target="_blank" class="img-post"><img src="{teaserImageUrl}" class="img-responsive" style="width:500px;height:244px"></a><p>{shortBody}</p><a href="{url}" target="_blank" class="btn-read">Ler mais</a></div>',
-	    tokens: {
-	        formattedDate: function (entry, tokens) {
-	            var date = new Date(entry.publishedDate);
-	            return date.toLocaleDateString("pt-BR");
-	        }
-	    }
-		});
-	
 		$(document).ready(function() {  
 			GCalEvents(calendar_json_url);
 
@@ -110,9 +95,21 @@
 				//Default is 75px, set to 0 for demo so any distance triggers swipe
 				threshold:0
 			});
+
+		{% if page.is_index == true %}
+		$("#blog-content").rss("http://blog.concretesolutions.com.br/feed/atom/", {
+	    limit: 2,
+	    layoutTemplate: '<div>{entries}</div>',
+	    entryTemplate: '<div class="col-md-6 post"><header><h2 class="title-post">{title}</h2><h6 class="author-post">Por: {author} {formattedDate}</h6></header><a href="{url}" target="_blank" class="img-post"><img src="{teaserImageUrl}" class="img-responsive" style="width:500px;height:244px"></a><p>{shortBody}</p><a href="{url}" target="_blank" class="btn-read">Ler mais</a></div>',
+	    tokens: {
+	        formattedDate: function (entry, tokens) {
+	            var date = new Date(entry.publishedDate);
+	            return date.toLocaleDateString("pt-BR");
+	        }
+	    }
 		});
-	
 		{% endif %}
+		});
 	</script>
 </body>
 </html>
