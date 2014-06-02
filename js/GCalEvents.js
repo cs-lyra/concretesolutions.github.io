@@ -27,10 +27,10 @@ function GCalEvents(gcal_json_url) {
                     event_date = event_start_date.getDate()+"-"+(event_start_date.getMonth()+1)+"-"+event_start_date.getFullYear();  
                 } else if (event_start_date.getDate() != event_end_date.getDate() && event_start_date.getMonth() === event_end_date.getMonth() && event_start_date.getFullYear() === event_end_date.getFullYear()) {
                     // xx à XX/XX/XXXX
-                    event_date =  event_start_date.getDate()+ " à " + event_end_date.getDate()+"-"+(event_end_date.getMonth()+1)+"-"+event_end_date.getFullYear();
+                    event_date =  event_start_date.getDate()+ " a " + event_end_date.getDate()+"-"+(event_end_date.getMonth()+1)+"-"+event_end_date.getFullYear();
                 } else if (event_start_date.getMonth() != event_end_date.getMonth() && event_start_date.getFullYear() === event_end_date.getFullYear()) {
                     // xx/XX à XX/XX/XXXX
-                    event_date = event_start_date.getDate()+"-"+event_start_date.getMonth()+ " à " + event_end_date.getDate()+"-"+(event_end_date.getMonth()+1)+"-"+event_end_date.getFullYear();
+                    event_date = event_start_date.getDate()+"-"+event_start_date.getMonth()+ " a " + event_end_date.getDate()+"-"+(event_end_date.getMonth()+1)+"-"+event_end_date.getFullYear();
                 }else if (event_start_date.getFullYear() != event_end_date.getFullYear()) {
                     // XX/xx/XX à XX/XX/XXXX
                     event_date = event_start_date.getDate()+"-"+(event_start_date.getMonth()+1)+"-"+event_start_date.getFullYear()+ " à " + event_end_date.getDate()+"-"+(event_end_date.getMonth()+1)+"-"+event_end_date.getFullYear();
