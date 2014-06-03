@@ -22,15 +22,24 @@ $(document).ready(function() {
     $(".info.erro").hide();
   });
 
-  // $('body').scrollspy({ target: '#secondary-menu' })
+  // popover
+  $('[data-toggle="popover"]').popover();
 
-  // //scroll menusecondary
-  // var nav = $('#secondary-menu');
-  // $(window).scroll(function () { if ($(this).scrollTop() > 100) { nav.addClass("f-nav"); } else { nav.removeClass("f-nav"); } });
+  $('body').on('click', function (e) {
+      $('[data-toggle="popover"]').each(function () {
+          //the 'is' for buttons that trigger popups
+          //the 'has' for icons within a button that triggers a popup
+          if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+              $(this).popover('hide');
+          }
+      });
+  });
 
+    
+  //fitText
+  // $(".text1").fitText(2.0);
+  //  $(".text2").fitText(2.6);
 }); 
-
-
 
 var divs = $('.hero-content, .hero-paragraph');
 $(window).on('scroll', function() {
