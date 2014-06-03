@@ -66,12 +66,19 @@
 	<script src="js/vendor/jquery.fittext-1.2.js"></script>
 	<script src="js/vendor/jquery.rss.min-1.4.1.js"></script>
 	<script src="js/vendor/jquery.touchswipe.min-1.6.5.js"></script>
+	<script src="js/vendor/jquery.stellar-0.6.2.js"></script>
 	<script src="js/GCalEvents.js"></script>
 	<script src="js/mailchimp.js"></script>
 	<script src="js/concrete.js"></script>
-	
+
 	<script type="text/javascript" charset="utf-8">
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		$(function(){
+			$.stellar({
+				horizontalScrolling: false,
+				verticalOffset: 40
+			});
+		});
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
