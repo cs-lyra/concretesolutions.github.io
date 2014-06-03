@@ -37,8 +37,8 @@ $(document).ready(function() {
 
     
   //fitText
-    $(".text1").fitText(2.0);
-    $(".text2").fitText(2.6);
+  // $(".text1").fitText(2.0);
+  //  $(".text2").fitText(2.6);
 }); 
 
 var divs = $('.hero-content, .hero-paragraph');

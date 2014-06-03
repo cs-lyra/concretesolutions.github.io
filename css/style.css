@@ -41,7 +41,7 @@ video {
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {padding-top: 90px;}
 body {font-family: 'Open Sans', sans-serif !important; font-size: 14px !important; color: #000 !important; }
-.hero-content {font-family:"Oswald"; position: relative; z-index: 1000; margin-top: 110px; margin-bottom: 110px;}
+.hero-content {font-family:"Oswald"; position: relative; z-index: 1000; margin-top: 100px; margin-bottom: 100px;}
 .box{padding: 30px 0;}
 .title{font-family: "Oswald"; font-size: 48px;}
 .purple{color: #7a68ae;}
@@ -79,11 +79,6 @@ body {font-family: 'Open Sans', sans-serif !important; font-size: 14px !importan
 .border-right{border-right: 1px solid #cecece !important;}
 .row{padding: 0 !important; margin: 0 !important;}
 .no-border{border: 0 !important;}
-
-.intro,
-.intro-who-we-are,
-.intro-what-we-do,
-.intro-jobs{position: relative; background-attachment: fixed;}
 
 /*-------------------HEADER------------------------*/
 .navbar{margin-bottom: 20px !important; position: relative; z-index: 90;}
@@ -164,18 +159,31 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 
 /*-------------------INTRO------------------------*/
 .intro {
-	padding: 30px 0;
+	padding: 50px 0 !important;
 	height:98%;
 	width: 100%;
-	background: url(../img/bg-home.jpg) no-repeat center top scroll;
+	background: #f4f4f4 url(../img/bg-home.jpg) no-repeat center top scroll;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 }
-.hero-content {font-family:"Oswald"; position: relative; z-index: 1000; margin-top: 110px; margin-bottom: 110px;}
-.hero-content h5 {font-weight: 300; font-size: 30px; margin-top: 0 !important; margin-bottom: 0 !important;}
-.hero-content h1 {font-weight: 400; font-size: 57px; margin-top: 0 !important;}
+.intro .hero-content {float: left; color: #000;}
+.intro .hero-content h1 {
+	font-size: 4.3em;
+	margin-top: 0 !important;
+	float: left;
+	clear: both;
+}
+
+.intro .hero-content h5 {
+	font-family:"Oswald";
+	font-size:2.2em;
+	width: 88%;
+	font-weight: 300;
+	float: left;
+	clear: both;
+}
 
 /*------------------TAGLINE----------------------*/
 #tagline {text-align:center; background-color: #7a68ae; padding: 5px 0;}
@@ -268,35 +276,25 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 
 /*-------------------INTRO------------------------*/
 .intro-who-we-are {
-	padding: 120px 0;
+	padding: 10% 0 20% 0;
 	height:98%;
 	width: 100%;
-	background: url(../img/bg-postit.jpg) no-repeat center top scroll;
+	background: url(../img/bg-postit.jpg) no-repeat center top fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 }
 .intro-who-we-are .hero-content h1 {
-	font-size: 3.2em;
-	margin-top: 0;
-	margin-bottom: 0;
+	font-size: 3.0em;
 	background-color: rgba(0, 0, 0, 0.8);
 	color: #fff;
-	margin-bottom: 20px;
 	padding: 15px;
+	width: auto;
+	float: left;
+	line-height: 1.2;
 }
 
-.intro-who-we-are .hero-content h2 {
-	font-size: 3.2em;
-	margin-top: 0;
-	margin-bottom: 0;
-	background-color: rgba(0, 0, 0, 0.8);
-	color: #fff;
-	margin-bottom: 20px;
-	padding: 10px;
-	width: 88%;
-}
 .decor-1{background: url("../img/decor-1.png") no-repeat 0 0 scroll; width: 48px; height: 39px; display: inline-block; margin-right: 10px;}
 .decor-2{background: url("../img/decor-2.png") no-repeat 0 0 scroll; width: 48px; height: 39px; display: inline-block; margin-left: 10px;}
 
@@ -357,66 +355,37 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 
 
 /*-------------------INTRO------------------------*/
+
+
 .intro-what-we-do {
-	padding: 80px 0;
+	padding: 8% 0 18% 0;
 	height:98%;
 	width: 100%;
-	background: url(../img/img-silicon.jpg) no-repeat center top scroll;
+	background: url("../img/img-silicon.jpg") no-repeat center top fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 }
 .intro-what-we-do h1 {
-	font-size: 4.3em;
+	font-size:4.4em;
 	margin-top: 0;
 	margin-bottom: 0;
 	background-color: rgba(0, 0, 0, 0.6);
 	color: #fff;
 	margin-bottom: 10px;
 	padding: 15px;
-	width: 98%;
 }
 
-.intro-what-we-do .hero-content h2,
-.intro-what-we-do .hero-content h3 {
-	font-size: 3.4em;
-	margin-top: 0;
-	margin-bottom: 0;
+.intro-what-we-do .hero-content h2{
+	font-size: 3.2em;
 	background-color: rgba(0, 0, 0, 0.6);
 	color: #fff;
 	margin-bottom: 10px;
+	margin-top: 0;
 	padding: 10px;
-	width: 92%;
 }
-.intro-what-we-do .hero-content h3{width: 61%;}
-
-/*#what-we-do nav{
-	background-color: #eee;
-	margin-top: 20px;
-	height: 56px;
-}
-#what-we-do	.nav>li>a {
-	text-transform: uppercase;
-	position: relative;
-	display: block;
-	padding: 15px 114px;
-	font-family: "Oswald";
-	font-size: 18px;
-	font-weight: 300;
-	color: #000 !important;
-}
-#what-we-do .nav-pills>li>a:hover{
-	background-color:#535252;
-	color: #fff !important;
-}
-#what-we-do .nav-pills>li>a {
-	border-radius: 0px !important;
-}
-#what-we-do .nav-pills>li.active>a {
-	color: #fff !important;
-	background-color: #535252 !important;
-}*/
+.intro-what-we-do .hero-content h3{width: 80%;}
 #what-we-do .title-service{font-family: "Oswald", sans-serif; font-size: 36px; margin: 30px auto;}
 #what-we-do .img-service{margin: 80px auto 30px auto;}
 #what-we-do .text-service{font-size: 16px; line-height: 1.6; text-align: justify; margin: 40px auto;}
@@ -536,7 +505,8 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 
 /*-----------------------------------------------*/
 .intro-jobs {
-	height:98%;
+	padding:5% 0 44% 0;
+	height:468px;
 	width: 100%;
 	background: url(../img/business_people.jpg) no-repeat center top scroll;
 	-webkit-background-size: cover;
@@ -544,16 +514,14 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 	-o-background-size: cover;
 	background-size: cover;
 }
-.intro-jobs .hero-content{margin-top: 430px;}
+.intro-jobs .hero-content{padding: 0; margin: 35% 0 0 0; float: left;}
 .intro-jobs .hero-content h1 {
-	font-size: 3.8em;
-	margin-top: 0;
-	margin-bottom: 0;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0,0,0,0.8);
+	font-size: 3.6em;
 	color: #fff;
-	margin-bottom: 20px;
 	padding: 15px;
-	width: 84%;
+	width: auto;
+	float: left;
 }
 
 
@@ -607,6 +575,7 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 		display: none;
 	}
 }
+
 @media screen and (min-width: 768px){
 	.container .jumbotron {
 		padding-left: 20px !important;
@@ -627,12 +596,19 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 }
 @media (max-width: 1000px){
 	.navbar-brand img{ width:220px !important;}
-	.hero-content {margin-top: 50px; margin-bottom: 50px;}
+}
+
+@media (max-width: 700px){
+	.intro .hero-content{
+		background-color: rgba(0,0,0,0.8);
+		padding: 5px;
+		color: #fff !important;	
+}
+
 }
 @media (max-width: 1199px){
 	.navbar-link{font-size: 14px !important;}
 	.navbar-link li a{padding-left:6px !important; padding-right: 4px !important;}
-	
 }
 @media (max-width: 630px){
 	h2.text{font-size: 12px !important; line-height: 1.2;}
