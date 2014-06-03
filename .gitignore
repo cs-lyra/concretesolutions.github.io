@@ -1,1 +1,5 @@
 _site
+run_local.bat
+site-cs.sublime-project
+site-cs.sublime-workspace
+venv/
