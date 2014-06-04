@@ -201,7 +201,7 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 }
 
 /*------------------CAROUSEL----------------------*/
-#carousel-example-generic{margin-top: 50px;}
+#carousel-example-generic{margin-top: 50px; height: 550px;}
 .carousel-indicators .active {
 	background-color: #000!important;
 }
@@ -244,7 +244,7 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 /*-------------------BLOG------------------------*/
 #blog .title{display: inline-block;}
 .post header{margin-top: 20px; width: 92%;}
-.title-post{font-family: "Oswald"; font-size: 18px; display: inline-block;}
+.title-post{font-family: "Oswald"; font-size: 17px; display: inline-block;}
 .author-post{font-size: 12px; font-weight: 300; display: block;}
 .social-media-post{float: right; margin-top: 20px;}
 .social-media-post a{display: block; background: url("../img/social-media.png") no-repeat 0 0 scroll; width: 22px; height: 22px; display: inline-block;} 
@@ -257,7 +257,7 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 	width: 540px;
 	height: 240px;
 }
-.post p{font-weight: 300; width: 84%; display: inline-block; vertical-align: top; text-align: left; margin-right: 15px; text-align: justify;}
+.post p{font-weight: 300; width: 75%; display: inline-block; vertical-align: top; text-align: left; margin-right: 15px; text-align: justify;}
 
 /*-------------------NEWS------------------------*/
 #news header{margin-bottom: 40px;}
@@ -534,6 +534,23 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 .jumbotron ul h4{display: block; font-weight: 700; font-size: 14px; margin-bottom: 20px}
 .jumbotron ul p{font-size:14px !important; font-weight: 400 !important; font-family: "Open Sans", sans-serif; text-decoration: underline;}
 .jumbotron ul li{font-weight: 300; font-size: 12px; padding: 5px 0; list-style: square; list-style-position: inside;}
+
+/*-----------------------------------------------*/
+
+/*---------------------ERROR-------------------*/
+
+/*-----------------------------------------------*/
+.header-error{background-color: black; margin-top: -90px; padding: 40px 0;}
+.error{ padding: 50px 0; margin-top: 10%}
+.box-error{text-align: right; border-right: 5px solid #7a68ae; padding-right: 7% !important; }
+.box-error h1{font-family: "Oswald", sans-serif; font-size: 12em; font-weight: 700; color: #7a68ae;}
+.error p{text-transform: uppercase; font-size: 1.2em; font-weight: 700;}
+.error h4{font-size: 22px; padding-left: 10px; color:#7a68ae; padding-bottom: 20px; padding-top: 10px}
+.error ul li{ list-style-type: square; list-style-position: inside; padding: 5px 10px; font-size: 16px; }
+.error a{padding-top: 10px; display: block; color: black; font-weight: 700;}
+.error span {font-size: 10px; padding: 0 10px 0 10px;}
+
+
 
 /*-----------------------------------------------*/
 
