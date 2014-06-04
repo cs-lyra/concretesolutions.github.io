@@ -201,7 +201,7 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 }
 
 /*------------------CAROUSEL----------------------*/
-#carousel-example-generic{margin-top: 50px;}
+#carousel-example-generic{margin-top: 50px; height: 550px;}
 .carousel-indicators .active {
 	background-color: #000!important;
 }
@@ -244,7 +244,7 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 /*-------------------BLOG------------------------*/
 #blog .title{display: inline-block;}
 .post header{margin-top: 20px; width: 92%;}
-.title-post{font-family: "Oswald"; font-size: 18px; display: inline-block;}
+.title-post{font-family: "Oswald"; font-size: 17px; display: inline-block;}
 .author-post{font-size: 12px; font-weight: 300; display: block;}
 .social-media-post{float: right; margin-top: 20px;}
 .social-media-post a{display: block; background: url("../img/social-media.png") no-repeat 0 0 scroll; width: 22px; height: 22px; display: inline-block;} 
@@ -257,7 +257,7 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 	width: 540px;
 	height: 240px;
 }
-.post p{font-weight: 300; width: 84%; display: inline-block; vertical-align: top; text-align: left; margin-right: 15px; text-align: justify;}
+.post p{font-weight: 300; width: 75%; display: inline-block; vertical-align: top; text-align: left; margin-right: 15px; text-align: justify;}
 
 /*-------------------NEWS------------------------*/
 #news header{margin-bottom: 40px;}
