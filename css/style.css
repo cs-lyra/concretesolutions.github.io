@@ -24,7 +24,7 @@ hr { display:none; }
 :focus { outline:0; }
 /* tables still need 'cellspacing="0"' in the markup */
 table { border-collapse:collapse; border-spacing:0; }
-a {text-decoration:none; }
+a {text-decoration:none; outline: none!important; }
 *, *:before, *:after {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
