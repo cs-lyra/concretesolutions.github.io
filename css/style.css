@@ -387,10 +387,10 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 	padding: 10px;
 }
 .intro-what-we-do .hero-content h3{width: 80%;}
-#what-we-do .title-service{font-family: "Oswald", sans-serif; font-size: 36px; margin: 30px auto;}
+#what-we-do .title-service{font-family: "Oswald", sans-serif; font-size: 36px; margin: 50px auto;}
 #what-we-do .img-service{margin: 80px auto 30px auto;}
 #what-we-do .text-service{font-size: 16px; line-height: 1.6; text-align: justify; margin: 40px auto;}
-#services {margin-bottom: 30px; background-color: #fff; border: 1px solid #cecece;}
+#services {margin-bottom: 30px; margin-top: 30px !important; background-color: #fff; border: 1px solid #cecece;}
 .box-service {
 	padding: 20px;
 	height: 100%;
