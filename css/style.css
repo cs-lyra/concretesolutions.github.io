@@ -636,3 +636,20 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 @media (max-width: 630px){
 	h2.text{font-size: 12px !important; line-height: 1.2;}
 }
+@media (max-width: 480px){
+    .modal {
+        position: fixed !important;
+        top: 3% !important;
+        right: 3% !important;
+        left: 3% !important;
+        bottom: 3% !important;
+        width: auto !important;
+        margin: 0 !important;
+    }
+    .modal-body {
+        max-height: 350px !important;
+        padding: 15px !important;
+        overflow-y: scroll !important;
+        -webkit-overflow-scrolling: touch !important;
+     }
+}
