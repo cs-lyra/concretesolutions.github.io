@@ -649,7 +649,7 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
     .modal-body {
         max-height: 350px !important;
         padding: 15px !important;
-        overflow-y: auto !important;
+        overflow-y: scroll !important;
         -webkit-overflow-scrolling: touch !important;
      }
 }
