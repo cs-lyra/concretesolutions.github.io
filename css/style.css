@@ -538,7 +538,15 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 .modal-body ul{display: block;}
 .modal-body ul h4{display: block; font-weight: 700; font-size: 14px; margin-bottom: 20px}
 .modal-body ul p{font-size:14px !important; font-weight: 400 !important; font-family: "Open Sans", sans-serif; text-decoration: underline;}
-.modal-body ul li{font-weight: 300; font-size: 14px; padding: 5px 0; list-style: square; list-style-position: inside;}
+.modal-body ul li, 
+ul.list li{
+	font-weight: 300;
+	font-size: 14px;
+	padding: 5px 0;
+	list-style: square;
+	list-style-position: inside;
+}
+
 .modal-footer{text-align: left !important; margin-top: 0 !important; padding-top: 0 !important;}
 
 /*-----------------------------------------------*/
