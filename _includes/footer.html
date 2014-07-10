@@ -98,7 +98,8 @@
             line = line.replace(/{local}/g, local);
             var competencias = "";
             $.each(pCompetencias.split(";"), function (index, value) {
-                competencias += "<li>" + value + "</li>";
+            	if(value != '')
+                	competencias += "<li>" + value + "</li>";
             });
             var extras = '';
             $.each(pExtras.split(";"), function (index, value) {
