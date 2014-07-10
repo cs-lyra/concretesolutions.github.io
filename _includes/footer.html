@@ -86,7 +86,33 @@
 	  ga('send', 'pageview');
 
 		var calendar_json_url = "https://www.google.com/calendar/feeds/concretesolutions.com.br_k3ja6rfulbk38j40n74r86qq98@group.calendar.google.com/public/full?orderby=starttime&sortorder=ascending&max-results=5&futureevents=true&alt=json";
+		var modelVaga =  $("#vaga-modelo").html();
+			$("#vaga-modelo").remove();
 
+		function fillVaga(id,titulo,email,horario,local,pCompetencias,pExtras,modelVaga) {
+			var line = modelVaga;
+            line = line.replace(/{id-vaga}/g, id);
+            line = line.replace(/{titulo}/g, titulo);
+            line = line.replace(/{email}/g, email);
+            line = line.replace(/{horario}/g, horario);
+            line = line.replace(/{local}/g, local);
+            var competencias = "";
+            $.each(pCompetencias.split(";"), function (index, value) {
+                competencias += "<li>" + value + "</li>";
+            });
+            var extras = '';
+            $.each(pExtras.split(";"), function (index, value) {
+                if(value != '')
+                	extras += "<li>" + value + "</li>";
+            });
+            line = line.replace("{competencias}", competencias);
+            line = line.replace("{beneficios}", $('#beneficios').html());
+            if(extras != '')
+                line = line.replace("{extras}", '<h4>Pontos Extras:</h4><ul>'+extras+'</ul>');
+            else 
+            	line = line.replace("{extras}", extras);
+            return line;
+		}
 		$(document).ready(function() {  
 			GCalEvents(calendar_json_url);
 
@@ -115,6 +141,92 @@
 	        }
 	    }
 		});
+		{% endif %}
+		{% if page.is_carreiras == true %}
+			var urlvagasCSSP = "https://spreadsheets.google.com/feeds/list/1zRxlDEsrpPsyPGHnw22So7mhsqAFtsKpwzRaRnGQhJA/od6/public/values?alt=json&sq=empresa%3DCS%20and%20base%3DSP";
+			var urlvagasCSRJ = "https://spreadsheets.google.com/feeds/list/1zRxlDEsrpPsyPGHnw22So7mhsqAFtsKpwzRaRnGQhJA/od6/public/values?alt=json&sq=empresa%3DCS%20and%20base%3DRJ";
+			var urlvagasFIX  = "https://spreadsheets.google.com/feeds/list/1zRxlDEsrpPsyPGHnw22So7mhsqAFtsKpwzRaRnGQhJA/od6/public/values?alt=json&sq=empresa%3DFIX";
+			var urlvagasCR   = "https://spreadsheets.google.com/feeds/list/1zRxlDEsrpPsyPGHnw22So7mhsqAFtsKpwzRaRnGQhJA/od6/public/values?alt=json&sq=empresa%3DCR";
+			$.getJSON(urlvagasCSSP, function (data) {
+			    var output = "";
+			    if (data.feed.entry == null) {
+			    	$('#vagas-cssp').siblings('.col-md-12').toggle();
+			    	$('#vagas-cssp').append('<div class="col-md-4"><h4>Sem vagas no momento!</h4></div>');
+			    } else {
+			        var count = 1;
+			        $.each(data.feed.entry, function (index, value) {
+			            $("#vagas-cssp").append(fillVaga('sp-vaga-'+count,
+														  value.gsx$titulo.$t,
+														  $("#mail-sp").text(),
+														  value.gsx$horario.$t,
+														  value.gsx$local.$t,
+														  value.gsx$competencias.$t,
+														  value.gsx$extras.$t,
+														  modelVaga));
+			            count++;
+			        });
+			    }
+			});
+			$.getJSON(urlvagasCSRJ, function (data) {
+			    var output = "";
+			    if (data.feed.entry == null) {
+			    	$('#vagas-csrj').siblings('.col-md-12').toggle();
+			    	$('#vagas-csrj').append('<div class="col-md-4"><h4>Sem vagas no momento!</h4></div>');
+			    } else {
+			        var count = 1;
+			        $.each(data.feed.entry, function (index, value) {
+			            $("#vagas-csrj").append(fillVaga('rj-vaga-'+count,
+														  value.gsx$titulo.$t,
+														  $("#mail-rj").text(),
+														  value.gsx$horario.$t,
+														  value.gsx$local.$t,
+														  value.gsx$competencias.$t,
+														  value.gsx$extras.$t,
+														  modelVaga));
+			            count++;
+			        });
+			    }
+			});
+			$.getJSON(urlvagasCR, function (data) {
+			    var output = "";
+			    if (data.feed.entry == null) {
+			    	$('#vagas-cr').siblings('.col-md-12').toggle();
+			        $("#vagas-cr").append('<div class="col-md-4"><h4>Sem vagas no momento!</h4></div>');
+			    } else {
+			        var count = 1;
+			        $.each(data.feed.entry, function (index, value) {
+			            $("#vagas-cr").append(fillVaga('cr-vaga-'+count,
+													  value.gsx$titulo.$t,
+													  $("#mail-cr").text(),
+													  value.gsx$horario.$t,
+													  value.gsx$local.$t,
+													  value.gsx$competencias.$t,
+													  value.gsx$extras.$t,
+													  modelVaga));
+			            count++;
+			        });
+			    }
+			});
+			$.getJSON(urlvagasFIX, function (data) {
+			    var output = "";
+			    if (data.feed.entry == null) {
+			    	$('#vagas-fix').siblings('.col-md-12').toggle();
+			        $('#vagas-fix').append('<div class="col-md-4"><h4>Sem vagas no momento!</h4></div>');
+			    } else {
+			        var count = 1;
+			        $.each(data.feed.entry, function (index, value) {
+			        	$("#vagas-fix").append(fillVaga('fix-vaga-'+count,
+													  value.gsx$titulo.$t,
+													  $("#mail-fix").text(),
+													  value.gsx$horario.$t,
+													  value.gsx$local.$t,
+													  value.gsx$competencias.$t,
+													  value.gsx$extras.$t,
+													  modelVaga));
+			            count++;
+			        });
+			    }
+			});
 		{% endif %}
 		});
 	</script>
