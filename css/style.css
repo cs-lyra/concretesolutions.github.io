@@ -515,7 +515,22 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 	-o-background-size: cover;
 	background-size: cover;
 }
-#seletiva{margin: 15px 0 25px 0;}
+
+#seletiva{ display: block; max-width: 1200px; min-height: 750px;}
+.seletiva-concrete{
+	margin: 15px 0 25px 0; 
+	background: url(../img/selecao-concrete-android-ios.jpg) no-repeat 0 0 scroll;
+	width: 1150px; 
+	height: 750px; 
+	font-family: "Oswald";
+	font-size: 22px;
+	color: #323232;
+	position: relative;
+}
+.seletiva-concrete .title-seletiva{font-size: 24px; padding: 90px 30px 0 30px;}
+.box-repositorio{display: block; padding-left: 37%; margin-top: 60px;}
+.box-repositorio a{color:#323232;}
+.descricao-seletiva{max-width: 675px; margin-left: 37%; padding-top: 30px;}
 .intro-jobs .hero-content{padding: 0; margin: 35% 0 0 0; float: left;}
 .intro-jobs .hero-content h1 {
 	background-color: rgba(0,0,0,0.8);
