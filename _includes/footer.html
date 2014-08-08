@@ -75,6 +75,9 @@
 
 
 	<script type="text/javascript" charset="utf-8">
+	$.ajaxSetup({
+    async: false
+	});
 		$(function(){
 			$.stellar({
 				horizontalScrolling: false,
@@ -151,9 +154,8 @@
 			    	$('#vagas-cssp').siblings('.col-md-12').toggle();
 			    	$('#vagas-cssp').append('<div class="col-md-4"><h4>Sem vagas no momento!</h4></div>');
 			    } else {
-			        var count = 1;
 			        $.each(data.feed.entry, function (index, value) {
-			            $("#vagas-cssp").append(fillVaga('sp-vaga-'+count,
+			            $("#vagas-cssp").append(fillVaga(value.gsx$index.$t,
 														  value.gsx$titulo.$t,
 														  $("#mail-sp").text(),
 														  value.gsx$horario.$t,
@@ -161,7 +163,6 @@
 														  value.gsx$competencias.$t,
 														  value.gsx$extras.$t,
 														  modelVaga));
-			            count++;
 			        });
 			    }
 			});
@@ -171,9 +172,8 @@
 			    	$('#vagas-csrj').siblings('.col-md-12').toggle();
 			    	$('#vagas-csrj').append('<div class="col-md-4"><h4>Sem vagas no momento!</h4></div>');
 			    } else {
-			        var count = 1;
 			        $.each(data.feed.entry, function (index, value) {
-			            $("#vagas-csrj").append(fillVaga('rj-vaga-'+count,
+			            $("#vagas-csrj").append(fillVaga(value.gsx$index.$t,
 														  value.gsx$titulo.$t,
 														  $("#mail-rj").text(),
 														  value.gsx$horario.$t,
@@ -181,7 +181,6 @@
 														  value.gsx$competencias.$t,
 														  value.gsx$extras.$t,
 														  modelVaga));
-			            count++;
 			        });
 			    }
 			});
@@ -191,9 +190,8 @@
 			    	$('#vagas-cr').siblings('.col-md-12').toggle();
 			        $("#vagas-cr").append('<div class="col-md-4"><h4>Sem vagas no momento!</h4></div>');
 			    } else {
-			        var count = 1;
 			        $.each(data.feed.entry, function (index, value) {
-			            $("#vagas-cr").append(fillVaga('cr-vaga-'+count,
+			            $("#vagas-cr").append(fillVaga(value.gsx$index.$t,
 													  value.gsx$titulo.$t,
 													  $("#mail-cr").text(),
 													  value.gsx$horario.$t,
@@ -201,7 +199,6 @@
 													  value.gsx$competencias.$t,
 													  value.gsx$extras.$t,
 													  modelVaga));
-			            count++;
 			        });
 			    }
 			});
@@ -211,9 +208,8 @@
 			    	$('#vagas-fix').siblings('.col-md-12').toggle();
 			        $('#vagas-fix').append('<div class="col-md-4"><h4>Sem vagas no momento!</h4></div>');
 			    } else {
-			        var count = 1;
 			        $.each(data.feed.entry, function (index, value) {
-			        	$("#vagas-fix").append(fillVaga('fix-vaga-'+count,
+			        	$("#vagas-fix").append(fillVaga(value.gsx$index.$t,
 													  value.gsx$titulo.$t,
 													  $("#mail-fix").text(),
 													  value.gsx$horario.$t,
@@ -221,10 +217,10 @@
 													  value.gsx$competencias.$t,
 													  value.gsx$extras.$t,
 													  modelVaga));
-			            count++;
 			        });
 			    }
 			});
+			window.setTimeout(openVaga, 500);
 		{% endif %}
 		});
 	</script>
