@@ -8,7 +8,7 @@ $(document).ready(function() {
     var sEmail  = $("#email").val();
     // filtros
     var emailFilter=/^.+@.+\..{2,}$/;
-    var illegalChars= /[\(\)\<\>\,\;\:\\\/\"\[\]]/
+    var illegalChars= /[\(\)\<\>\,\;\:\\\/\"\[\]]/;
     // condição
     if(!(emailFilter.test(sEmail))||sEmail.match(illegalChars)){
       $(".info").show().removeClass("ok").addClass("erro")
@@ -39,12 +39,30 @@ $(document).ready(function() {
   //fitText
   // $(".text1").fitText(2.0);
   //  $(".text2").fitText(2.6);
-}); 
+});
+
+var qs = (function(a) {
+    if (a === "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i)
+    {
+        var p=a[i].split('=');
+        if (p.length != 2) continue;
+        b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+})(window.location.search.substr(1).split('&'));
+
+function openVaga(){
+  if(qs["vaga"]){
+      document.getElementById(qs["vaga"]).style.display = 'block';
+  }
+}
 
 var divs = $('.hero-content, .hero-paragraph');
 $(window).on('scroll', function() {
     var st = $(this).scrollTop();
-    divs.css({ 
+    divs.css({
         'opacity' : 1 - st/450
-    }); 
+    });
 });
