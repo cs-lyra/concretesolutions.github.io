@@ -255,8 +255,6 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 .img-post{
 	display: block;
 	margin-bottom: 15px;
-	width: 540px;
-	height: 240px;
 }
 .post p{font-weight: 300; width: 75%; display: inline-block; vertical-align: top; text-align: left; margin-right: 15px; text-align: justify;}
 
