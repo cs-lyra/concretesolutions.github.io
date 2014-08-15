@@ -66,6 +66,7 @@ body {
 	background-color: #7A68AE!important;
 }
 input{outline: none !important;}
+
 /*-------------------INTRO------------------------*/
 .intro {
 	padding: 50px 0 !important;
@@ -220,6 +221,9 @@ input{outline: none !important;}
 /*	background-color:rgba(124,104,174,0.8);*/
 	width: 99%;
 	font-weight: 400;	
+}
+.view .white {
+	color:#FFF;
 }
 .view .text2{font-size: 1em; font-family: "Open Sans"; padding: 0 !important; margin-top: 10px;}
 #descobrir .row, #desenvolver .row, #gerenciar .row{margin: 0 !important;}
