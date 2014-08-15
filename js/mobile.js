@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  $("#conteudo").load("descobrir.html");
   $("#btn-descobrir").click(function(evento){
     evento.preventDefault();
     $("#conteudo").load("descobrir.html");
@@ -38,11 +39,11 @@ function ExibirOcultarDivs(id) {
 }
 
 $(function(){
-	  $("#carrossel").jCarouselLite({
+	$("#carrossel").jCarouselLite({
 			btnPrev : '.prev',
 			btnNext : '.next',
 			auto    : 4000,
 			speed   : 3000,
 			visible : 4
-	  })
+	});
 });
