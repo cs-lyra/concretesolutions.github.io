@@ -28,19 +28,42 @@ is_index: true
   </div>
 </section>
 <section id="how-we-do">
-  <header class="secondary-menu">
-    <div class="container">
-      <nav>
-        <span class="text-title">Nossas Técnicas</span>  
-        <ul class="nav navbar-nav navbar-link">
-          <li><a id="btn-descobrir" href="#descobrir">Descobrir</a></li>
-          <li><a id="btn-desenvolver" href="#desenvolver">Desenvolver</a></li>
-          <li><a id="btn-gerenciar" href="#gerenciar">Gerenciar</a></li>
-        </ul>
-      </nav>
+  <div class="divisoria"></div>
+  <div class="container">
+    <div id="menu">
+      <span class="text-title">Nossas Técnicas</span>
+      <ul id="scrollingMenu">
+        <li><a related-div="#banner-descobrir" href="descobrir.html" class="JS-scrollMenu">Descobrir</a></li>
+        <li class="active"><a related-div="#banner-desenvolver" href="desenvolver.html" class="JS-scrollMenu">Desenvolver</a></li>
+        <li><a related-div="#banner-gerenciar" href="gerenciar.html" class="JS-scrollMenu">Gerenciar</a></li>
+        
+        
+      </ul>
     </div>
-  </header>
-  <div id="conteudo"></div>
+    <div class="banner-master JS-banner" id="banner-descobrir" style="display: block">
+      <h3 class="title">Descobrir</h3>
+      <div class="bloco">
+          <p class="text-banner-master">
+           Ajudamos a validar sua ideia e descobrir qual é o aplicativo certo a ser desenvolvido. 
+          </p>
+      </div>
+    </div>
+    <div class="banner-master JS-banner" id="banner-desenvolver" style="display: none">
+      <h3 class="title">Desenvolver</h3>
+      <div class="bloco">
+          <p class="text-banner-master">Desenvolvemos seu aplicativo do jeito certo: com times ágeis e práticas de desenvolvimento utilizadas no Vale do Silício.</p>
+      </div>
+    </div>
+    <div class="banner-master JS-banner" id="banner-gerenciar" style="display: none">
+      <h3 class="title">Gerenciar</h3>
+      <div class="bloco">
+          <p class="text-banner-master">
+          Cuidamos do seu aplicativo, monitorando métricas e iterando as melhores soluções.
+          </p>
+      </div>
+    </div>
+    <div id="conteudo"></div>
+  </div>
 </section>
 <section id="cases" class="content-cases">
   <header>
@@ -49,24 +72,28 @@ is_index: true
     </div>
   </header>
   <div class="depoimento">
-    <div class="container" id="div1" style="display:block;">
+    <div class="container JS-depoimentoTexto" id="divMontacasa" style="display:block;">
       <p>“Aprendemos a entender o comportamento do consumidor e a não construir nada que você não tenha ideia se vai ser útil, não gastar para construir antes de testar, testar com o mínimo possível, etc. Tiramos grandes lições desta parceria, além é claro, de ganhar em dinamismo. Na primeira semana já sentimos mudanças internas e mais facilidade nas tomadas de decisão.”</p>
       <p class="autor">Caroline Dias, CEO do Montacasa</p>
     </div>
 
-    <div class="container" id="div2" style="display:none;">
+    <div class="container JS-depoimentoTexto" id="divDafiti" style="display:none;">
       <p>“A Concrete Solutions teve que compreender o cenário em que estávamos e enfrentar um nível de exigência muito alto dos sócios. Adotamos, então, um modelo de discussões frequentes de usabilidade, técnica e prioridades, envolvendo toda a equipe de TI e marketing. Em toda a minha vida profissional nunca tive algo tão agressivo e de resultados tão concretos nas mãos. Nosso grau de satisfação com o resultado é muito bom”.</p>
       <p class="autor">Roberto Heingst, gerente de TI da Dafiti.</p>
+    </div>
+    <div class="container JS-depoimentoTexto" id="divTricae" style="display:none;">
+      <p>“Quando percebemos uma tendência de aumento das visitas no nosso site via celular, entendemos que era preciso fazer um aplicativo para otimizar a experiência do usuário e gerar mais leads. Conhecemos a Concrete Solutions em abril, fechamos negócio em maio e em agosto lançamos nossos aplicativos para Android e iOS. Acredito que a expertise do time, que é bastante sólido e conhece bem o negócio de e-commerce, gerou uma grande agilidade, que foi essencial para o projeto. Recomendo.”</p>
+      <p class="autor">Caio Motta, Founder da Tricae.</p>
     </div>
   </div>
   <div class="container">
     <div class="fixed-bar">
       <!-- Elastislide Carousel -->
       <ul id="carousel" class="elastislide-list">
-        <li><a onClick = "ExibirOcultarDivs('div1')" id="montacasa"><img src="/img/montacasa-logo.png" alt="image01" /></a></li>
-        <li><a onClick = "ExibirOcultarDivs('div2')" id="dafiti"><img src="/img/dafiti-logo.png" alt="Dafiti" /></a></li>
+        <li><a related-div="#divMontacasa" class="JS-depoimento"><img src="/img/montacasa-logo.png" alt="Montacasa" /></a></li>
+        <li><a related-div="#divDafiti" class="JS-depoimento"><img src="/img/dafiti-logo.png" alt="Dafiti" /></a></li>
+        <li><a related-div="#divTricae" class="JS-depoimento"><img src="/img/tricae-logo.png" alt="Tricae" /></a></li>
         <li><a><img src="/img/kanui-logo.png" alt="Kanui" /></a></li>
-        <li><a><img src="/img/tricae-logo.png" alt="Tricae" /></a></li>
         <li><a><img src="/img/dufry-logo.png" alt="Dufry" /></a></li>
         <li><a><img src="/img/comprafacil-logo.png" alt="Compra Facil" /></a></li>
       </ul>
