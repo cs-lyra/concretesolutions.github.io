@@ -1,49 +1,25 @@
 $(document).ready(function(){
   $("#conteudo").load("descobrir.html");
-  $("#btn-descobrir").click(function(evento){
+  
+  $(".JS-scrollMenu").click(function(evento){
     evento.preventDefault();
-    $("#conteudo").load("descobrir.html");
+    var link = $(this).attr("href");
+    var related_div = $(this).attr("related-div");
+    $(".JS-banner").hide();
+    $(related_div).show();
+    
+    $('#scrollingMenu li:first').animate({'opacity':0}, 0, function () {
+      $(this).appendTo($('#scrollingMenu')).css('opacity', 1);
+    });
+    $('#scrollingMenu li').removeClass('active');
+    $('#scrollingMenu li:nth-child(2)').addClass('active');
+    $("#conteudo").load(link);
   });
 
-  $("#btn-desenvolver").click(function(evento){
+  $(".JS-depoimento").click(function(evento) {
     evento.preventDefault();
-    $("#conteudo").load("desenvolver.html");
+    $(".JS-depoimentoTexto").hide();
+    div_id = $(this).attr("related-div");
+    $(div_id).show();
   });
-
-  $("#btn-gerenciar").click(function(evento){
-    evento.preventDefault();
-    $("#conteudo").load("gerenciar.html");
-  });
-});
-
-// script ocultar e exebir
-//declaração do Array, com tamanho 5(elementos)
-arDivs = new Array(4);
-
-arDivs[0] = "div1";
-arDivs[1] = "div2";
-arDivs[2] = "div3";
-arDivs[3] = "div4";
-
-function ExibirOcultarDivs(id) {
-   var div;
-   for (var i = 0; i < 5; i++) {
-       div = document.getElementById(arDivs[i]);
-       if (div.id == id) {
-           div.style.display = 'block';
-       }
-       else {
-           div.style.display = 'none';
-       }
-   }
-}
-
-$(function(){
-	$("#carrossel").jCarouselLite({
-			btnPrev : '.prev',
-			btnNext : '.next',
-			auto    : 4000,
-			speed   : 3000,
-			visible : 4
-	});
 });
