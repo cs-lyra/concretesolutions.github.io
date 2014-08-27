@@ -4,3 +4,5 @@ highlighter: pygments
 description: "Concrete Solutions"
 url: "http://www.concretesolutions.com.br"
 
+gems:
+  - jekyll-sitemap
