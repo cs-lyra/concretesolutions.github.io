@@ -1,6 +1,6 @@
 Concrete Solutions
 ==========
-Se você quiser ajudar a melhorar este guia, escrevendo, corrigindo ou aprimorando a experiência de utilização, por favor, faça um FORK do projeto e mãos à obra.
+Se quiser, ajude a melhorar nosso site, corrigindo ou aprimorando a experiência de uso. Faça um FORK do projeto e pronto!
 
 ----------
 
