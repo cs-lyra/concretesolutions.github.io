@@ -10,9 +10,9 @@ Utilizamos [Jekyll](http://jekyllrb.com) uma Gem do [Ruby](http://www.ruby-lang.
 
 1. Instale o [Ruby](http://www.ruby-lang.org/pt/downloads/) e o [nodeJS](http://nodejs.org/download/)
 
-2. Instale a Gem do [Jekyll](http://jekyllrb.com/):
+2. Instale as Gems do [Jekyll](http://jekyllrb.com/) e do [Jekyll-Sitemap](https://github.com/jekyll/jekyll-sitemap):
     ```
-    sudo gem install jekyll
+    sudo gem install jekyll jekyll-sitemap
     ```
 3. Clone o projeto:
     ```
