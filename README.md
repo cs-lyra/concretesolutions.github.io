@@ -10,7 +10,7 @@ Utilizamos [Jekyll](http://jekyllrb.com) uma Gem do [Ruby](http://www.ruby-lang.
 
 1. Instale o [Ruby](http://www.ruby-lang.org/pt/downloads/) e sua versão para desenvolvimento (pacote ruby-dev ou ruby-devel)
 
-2. Instale o [nodeJS](http://nodejs.org/download/)
+2. Instale algum dos [runtimes](https://github.com/sstephenson/execjs#execjs) de JavaScript, se necessário. Exemplo: [nodeJS](http://nodejs.org/download/)
 
 3. Instale as Gems do [Jekyll](http://jekyllrb.com/) e do [Jekyll-Sitemap](https://github.com/jekyll/jekyll-sitemap):
     ```
