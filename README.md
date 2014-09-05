@@ -8,7 +8,7 @@ Como funciona
 ----------
 Utilizamos [Jekyll](http://jekyllrb.com) uma Gem do [Ruby](http://www.ruby-lang.org/) para gerar páginas estáticas.
 
-1. Instale o [Ruby](http://www.ruby-lang.org/pt/downloads/) 
+1. Instale o [Ruby](http://www.ruby-lang.org/pt/downloads/) e o [nodeJS](http://nodejs.org/download/)
 
 2. Instale a Gem do [Jekyll](http://jekyllrb.com/):
     ```
