@@ -16,18 +16,22 @@ Utilizamos [Jekyll](http://jekyllrb.com) uma Gem do [Ruby](http://www.ruby-lang.
     ```
     sudo gem install jekyll jekyll-sitemap
     ```
+
 4. Clone o projeto:
     ```
     git@github.com:pedrotcaraujo/concretesolutions.github.io.git
     ```
+
 5. Vá a pasta do projeto:
     ```
     cd concretesolutions.github.io
     ```
+
 6. Inicie o [Jekyll](http://jekyllrb.com/):
     ```
     jekyll serve
     ```
+
 7. Acesse [http://localhost:4000/](http://localhost:4000/)
 
 
