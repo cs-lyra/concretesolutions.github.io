@@ -3,3 +3,5 @@ site-cs.sublime-project
 site-cs.sublime-workspace
 run_local.bat
 venv/
+*.swp
+*~

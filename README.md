@@ -8,25 +8,31 @@ Como funciona
 ----------
 Utilizamos [Jekyll](http://jekyllrb.com) uma Gem do [Ruby](http://www.ruby-lang.org/) para gerar páginas estáticas.
 
-1. Instale o [Ruby](http://www.ruby-lang.org/pt/downloads/) 
+1. Instale o [Ruby](http://www.ruby-lang.org/pt/downloads/) e sua versão para desenvolvimento (pacote ruby-dev ou ruby-devel)
 
-2. Instale a Gem do [Jekyll](http://jekyllrb.com/):
+2. Instale algum dos [runtimes](https://github.com/sstephenson/execjs#execjs) de JavaScript, se necessário. Exemplo: [nodeJS](http://nodejs.org/download/)
+
+3. Instale as Gems do [Jekyll](http://jekyllrb.com/) e do [Jekyll-Sitemap](https://github.com/jekyll/jekyll-sitemap):
     ```
-    sudo gem install jekyll
+    sudo gem install jekyll jekyll-sitemap
     ```
-3. Clone o projeto:
+
+4. Clone o projeto:
     ```
     git@github.com:pedrotcaraujo/concretesolutions.github.io.git
     ```
-4. Vá a pasta do projeto:
+
+5. Vá a pasta do projeto:
     ```
     cd concretesolutions.github.io
     ```
-5. Inicie o [Jekyll](http://jekyllrb.com/):
+
+6. Inicie o [Jekyll](http://jekyllrb.com/):
     ```
     jekyll serve
     ```
-5. Acesse [http://localhost:4000/](http://localhost:4000/)
+
+7. Acesse [http://localhost:4000/](http://localhost:4000/)
 
 
 Estrutura básica de diretórios
