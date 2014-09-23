@@ -1,5 +1,4 @@
-
-
+$(document).ready(function(){
   $(".JS-depoimento").click(function(evento) {
     evento.preventDefault();
     $(".JS-depoimentoTexto").hide();
