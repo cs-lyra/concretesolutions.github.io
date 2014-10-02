@@ -485,7 +485,7 @@ margin: 5px 5px !important;
 .elastislide-horizontal ul li {
 	height: 100%;
 	display: inline-block;
-	margin-left:35px; 
+	margin-left:14px; 
 }
 .elastislide-carousel ul li a {
 	display: inline-block;
@@ -522,6 +522,13 @@ margin: 5px 5px !important;
 	right: 10px;
 	left: auto;
 	background-position: -20px 0px;
+}
+
+
+.client {
+	width:118px;  
+	height:118px;
+
 }
 
 /*-------------------CALL ACTION------------------------*/
