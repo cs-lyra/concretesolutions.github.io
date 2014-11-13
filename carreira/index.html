@@ -9,7 +9,7 @@ is_carreiras: true
 			<h1>Vem trabalhar com a gente!</h1>
 		</div>
 	</div>
-</section>	
+</section>
 <section id="jobs" class="box">
 	<div class="container">
 		<header><h1 class="title">Carreira</h1></header>
@@ -24,14 +24,15 @@ is_carreiras: true
 				<li>Salário compatível com o mercado.</li>
 			</ul>
 		</div>
-
-		<div class="row">
+		<iframe id='iframe_vagas' height="600" width="1000" src="http://www.bizut.me/vagas/publicas/853">
+		</iframe>
+		<!-- <div class="row">
 			<h2 class="secondary-title"><span class="purple">//</span> São Paulo</h2>
 			<div class="col-md-12">
 				<h4>Enviar currículos para <a id="mail-sp" href="mailto:recrutamentosp@concretesolutions.com.br">recrutamentosp@concretesolutions.com.br</a></h4>
 				<br>
 			</div>
-			<div id="vagas-cssp"></div>		       
+			<div id="vagas-cssp"></div>
 		</div>
 		<div class="row">
 			<h2 class="secondary-title"><span class="purple">//</span> Rio de Janeiro</h2>
@@ -46,8 +47,8 @@ is_carreiras: true
 			<div class="col-md-12">
 				<h4>Enviar currículos para <a id="mail-cr" href="mailto:adefinir@concretesolutions.com.br">adefinir@concretesolutions.com.br</a></h4>
 				<br>
-			</div>	
-			<div id="vagas-cr"></div>	
+			</div>
+			<div id="vagas-cr"></div>
 		</div>
 		<div class="row">
 			<h2 class="secondary-title"><span class="purple">//</span> Fix</h2>
@@ -56,7 +57,7 @@ is_carreiras: true
 				<br>
 			</div>
 			<div id="vagas-fix"></div>
-		</div>
+		</div> -->
 	</div>
 </section>
 <div id="vaga-modelo" style="display:none">
@@ -68,7 +69,7 @@ is_carreiras: true
 		<a href="mailto:{email}?subject={titulo}" class="btn-master">candidatar-se</a>
 	  </div>
 	</div>
-	<!-- //// MODAL VAGA //// -->	
+	<!-- //// MODAL VAGA //// -->
 	<div class="modal" id="{id-vaga}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -81,12 +82,12 @@ is_carreiras: true
 	        <p>Local: {local}</p>
 			<p>Enviar e-mail com assunto "{titulo}", com currículo no corpo do e-mail, para {email}</p>
 			<h4>O que esperamos do candidato:</h4>
-			<ul>			   
-	        	{competencias} 
-			</ul>			   
+			<ul>
+	        	{competencias}
+			</ul>
 	        {extras}
-	        <h4>O que oferecemos:</h4>    
-	        {beneficios} 		   
+	        <h4>O que oferecemos:</h4>
+	        {beneficios}
 			<h5>Enviar currículo com pretensão salarial.</h5>
 	      </div>
 		  <div class="modal-footer">
