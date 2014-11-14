@@ -15,7 +15,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	/*vertical-align: baseline;*/
 }
 body { line-height:1; }
-input, select, textarea { border:1px solid #aeaeae; margin:0px; color:#555; padding:0px; font-size:11px;}
+input, select, textarea { border:1px solid #aeaeae; margin:0px; /* color:#555; */ padding:0px; font-size:11px;}
 ol, ul { list-style:none; }
 blockquote, q { quotes:none; }
 hr { display:none; }
@@ -40,10 +40,8 @@ video {
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {padding-top: 61px;}
 body {
-	background-color: #39334C !important;
 	font-family: "Oswald", sans-serif !important;
 	font-size: 14px !important;
-	color: #fff !important;
 	font-weight: 300; 
 }
 .title{text-transform: uppercase;}
@@ -72,7 +70,7 @@ input{outline: none !important;}
 	padding: 50px 0 !important;
 	height:98%;
 	width: 100%;
-	background: #f4f4f4 url(../img/bg-header.jpg) no-repeat right top scroll;
+	background: #f4f4f4 url(/img/ecommerce/bg-header.jpg) no-repeat right top scroll;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -80,27 +78,27 @@ input{outline: none !important;}
 }
 .intro .hero-content {color: #fff; text-align: right;}
 .intro .hero-content h1 {
-	font-size: 5.3em;
+	font-size: 4.5em;
 	margin-top: 0 !important;
 	clear: both;
 }
 .intro .hero-content h5 {
 	font-size: 1.8em;
-	color: #D4D4D4;
+	color: #FFF;
 	clear: both;
 	font-weight: 300;
 }
 .newsletter{padding-top: 45px;}
 .newsletter form input {
 	padding: 15px 10px 15px 50px;
-	color: #F8F8F8;
+	color: #fff !important;
 	font-size: 18px;
 	background-color: transparent;
 	border: 1px solid #ccc;
 	width: 370px !important;
 	height: 60px;
 	border-radius: 4px;
-	background: url(../img/ico-email.png) no-repeat 10px 15px;
+	background: url(/img/ico-email.png) no-repeat 10px 15px;
 	margin-bottom: 10px;	
 }
 .newsletter form button{
@@ -115,6 +113,20 @@ input{outline: none !important;}
 	margin-left: 24px;
 	padding: 14px;
 }
+
+.response-error{
+	font-size: 0.7em;
+	color: #c00;
+	float: right !important;
+}
+
+.response-success{
+	font-size: 0.7em;
+	color: #ff8;
+	float: right !important;
+}
+
+.form-control::-webkit-input-placeholder{color:#dcdcd9;}
 
 .divisoria{ border-bottom: 1px solid #979797; margin-bottom: 40px;}	
 /*----------------- Como fazemos -------------*/
@@ -160,13 +172,13 @@ input{outline: none !important;}
 
 .banner-master .title{ margin: 20px 0 0 30px !important; padding: 5px; color:#000; font-size: 2.4em; display: inline-block;}
 .banner-master .bloco{
-	background-color: rgba(0,0,0,0.6); 
+	background-color: rgba(0,0,0,0.4); 
 	width: 100%;
-	height: 122px;
 	bottom: 0;
 	position: absolute;
-	padding: 1px 0 0 18px;
+	padding: 15px 20px 5px;
 
+	color: #fff;
 }
 .banner-master .bloco .text-banner-master{font-size: 22px;}
 .view {
@@ -201,17 +213,14 @@ input{outline: none !important;}
 	width: 100%;
 	height: 36%;
 	padding: 10px;
-	background-color: rgba(124,104,174,0);
-	position: absolute;
+	position: relative;
 	bottom: 0;
-	left: 0;
 }
 .view:hover .mask {
 	z-index: 10;
-	background-color: rgba(131,126,169,1);
 	
 }
-.view .color2{background-color: rgba(0,0,0,0.6);}
+.view .color2{}
 
 
 .view .color3{background-color: rgba(131,126,169,1);}
@@ -220,8 +229,8 @@ input{outline: none !important;}
 	bottom: 5px;
 	font-size: 1.4em;
 	font-weight: 300;
-	margin-top: 8px; 
-	padding: 5px 20px;
+	margin-top: 0; 
+	padding: 0 10px;
 	color: #000;
 /*	background-color:rgba(124,104,174,0.8);*/
 	width: 99%;
@@ -247,8 +256,12 @@ margin: 5px 5px !important;
 /*----------------------------
 		Descobrir
 ----------------------------*/
+#how-we-do{
+	padding-top: 80px;
+}
+
 #banner-descobrir{
-	background: #f4f4f4 url("../img/bg_banner_descobrir.jpg") no-repeat center center scroll;
+	background: #f4f4f4 url("../img/ecommerce/banner2.jpg") no-repeat center center scroll;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -256,50 +269,74 @@ margin: 5px 5px !important;
 	border-radius: 3px;
 }
 #descobrir .item-1{
-	height: 480px;
-	background: url("../img/img-descobrir-1.jpg") no-repeat center center scroll;
+	height: 200px;
+	background: url("../img/ecommerce/Melhores-praticas.png") no-repeat top left scroll;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	border-radius: 3px;
+	padding-left: 125px !important;
+	background-size: 107px 107px !important;
 }
 #descobrir .item-2{
-	height: 240px;
-	background: url("../img/img-descobrir-2.jpg") no-repeat center center scroll;
+	background: url("../img/ecommerce/Sustentacao.png") no-repeat left top scroll;
+	height: 200px;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	border-radius: 3px;
-
+	border-radius: 3px;	
+	padding-left: 125px !important;
+	background-size: 107px 107px !important;
 }
 #descobrir .item-3{
-	height: 240px;
-	background: url("../img/img-descobrir-3.jpg") no-repeat center center scroll;
+	background: url("../img/ecommerce/Escalabilidade-e-seguranca.png") no-repeat left top scroll;
+	height: 200px;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	border-radius: 3px;
+	border-radius: 3px;	
+	padding-left: 125px !important;
+	background-size: 107px 107px !important;
 }
 #descobrir .item-4{
-	height: 240px;
-	background: url("../img/img-descobrir-4.jpg") no-repeat center center scroll;
+	background: url("../img/ecommerce/Sucesso-baseado-em-metricas.png") no-repeat left top scroll;
+	height: 200px;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	border-radius: 3px;
+	border-radius: 3px;	
+	padding-left: 125px !important;
+	background-size: 107px 107px !important;
+
 }
 #descobrir .item-5{
-	height: 240px;
-	background: url("../img/img-descobrir-5.jpg") no-repeat center center scroll;
+	background: url("../img/ecommerce/Tecnologia.png") no-repeat left top scroll;
+	height: 200px;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	border-radius: 3px;
+	border-radius: 3px;	
+	padding-left: 125px !important;
+		background-size: 107px 107px !important;
+
+}
+
+#descobrir .item-6{
+	background: url("../img/ecommerce/Personalizacao.png") no-repeat left top scroll;
+	height: 200px;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	border-radius: 3px;	
+	padding-left: 125px !important;
+		background-size: 107px 107px !important;
+
 }
 
 
@@ -407,11 +444,13 @@ margin: 5px 5px !important;
 
 /*----------------cases------------------*/
 .content-cases{
-	background-color: #39334C;
-	padding-bottom: 50px;
+	font-size: 19px;
+	text-align: center;
+	background-color: #eeeeee;
+	padding: 53px 0;
+	/*padding-bottom: 30px;*/
 }
 .content-cases header{
-	border-bottom: solid 1px #fff;
 	text-align: center;
 	width: 100%;
 	display: inline-block;
@@ -421,12 +460,27 @@ margin: 5px 5px !important;
 	text-transform: uppercase;
 }
 .depoimento{
-	border-top: 1px solid #323232;
-	padding: 30px 0; 
-	font-size: 19px;
-	text-align: center;
+	margin: 30px 0;
+	float: left;
+	font-style: italic;
 }
-.depoimento .autor{padding-top: 20px;}
+.depoimento .autor{padding: 10px 0px 20px 0px; font-style: normal !important;}
+
+.problema, .solucao {
+    text-align: left;
+    padding: 0px 30px 20px 100px !important;
+    margin: 40px 0px 0px 0px !important;
+    /*min-height: 167px !important;*/
+}
+
+.problema {
+	background: url("/img/ecommerce/desafio.png") no-repeat left top;
+}
+
+.solucao{
+	background: url("/img/ecommerce/solucao.png") no-repeat left top;
+}
+
 .box-carrossel{position: relative; margin-bottom: 40px;}
 
 /* Elastislide Style */
@@ -441,12 +495,16 @@ margin: 5px 5px !important;
 
 .elastislide-carousel ul li {
 	min-width: 20px; /* minimum width of the image (min width + border) */
-	background-color: #000;
+	max-width: 118px;
+	background-color: #fff;
 }
+
+.elastislide-carousel ul li img { vertical-align: baseline;}
 
 .elastislide-wrapper {
 	position: relative;
 	margin: 0 auto;
+	margin-top: 30px;
 }
 
 .elastislide-wrapper.elastislide-loading {
@@ -503,7 +561,7 @@ margin: 5px 5px !important;
 
 .elastislide-wrapper nav span {
 	position: absolute;
-	background: url(../img/arrow.png) no-repeat 0 0;
+	background: url(/img/ecommerce/arrow.png) no-repeat 0 0;
 	width: 20px;
 	height: 34px;
 	cursor: pointer;
@@ -531,8 +589,35 @@ margin: 5px 5px !important;
 
 }
 
+
+/*-------------------PARTNERS------------------------*/
+.content-partners{
+	padding-top: 53px;
+	padding-bottom: 30px;
+	background-color: white;
+	text-align: center;
+}
+
+.content-partners header{
+	width: 100%;
+	display: inline-block;
+}
+.content-partners header h1{
+	font-size: 26px;
+	text-transform: uppercase;
+}
+
+.partners-image{
+	padding: 30px 0; 
+}
+.parceiro{
+	float: left;
+}
+
+
+
 /*-------------------CALL ACTION------------------------*/
-#call-action {text-align:center; background-color: #7a68ae; padding:30px 0 20px 0; text-align: center; }
+#call-action {text-align:center; background-color: #7a68ae; padding:15px 0 15px 0; text-align: center; }
 #call-action h2 {
 	display: inline-block;
 	color:#fff;
@@ -570,18 +655,58 @@ transition: all 0.3s ease-in-out;
 }
 
 /* ------------- Footer ---------------*/
-footer{background-color:#39334C; padding: 40px 0 20px 0; color: #fff;}
-.social-media-footer{display: block; width: 300px !important; margin: 0 auto;}
-.social-media-footer li{display: inline-block;}
-.social-media-footer li a{ display:block; background: url("../img/social-media-2.png") no-repeat 0 0 scroll; width: 30px; height: 30px;margin-left: 20px;}
-.social-media-footer li a:hover{opacity: 0.5;}
-.social-media-footer li .facebook{ background-position: 0 0;}
-.social-media-footer li .twitter{ background-position: -34px 0;}
-.social-media-footer li .google{ background-position: -72px 0;}
-.social-media-footer li .linkedin{ background-position: -108px 0;}
-.social-media-footer li .youtube{ background-position: -143px 0;}
+footer{background-color:#39334C; padding-top: 10px; color: #fff; overflow: hidden;}
+.box-content h4{font-family: "Oswald"; font-size: 24px; margin-bottom: 30px;}
+.box-content ul li a{color: #fff; font-weight: 300; font-size: 16px;}
+.social-media-footer{display: block; width: 300px !important; margin: 0;}
+.social-media-footer li{display: inline-block; margin-right:5px}
+.box-content .social-media-footer li a{ display:block; background: url("../img/social-media-footer.png") no-repeat 0 0 scroll; width: 48px; height: 48px;}
+.box-content .social-media-footer li a:hover{opacity: 0.5;}
+.box-content .social-media-footer li .facebook{ background-position: 0 0;}
+.box-content .social-media-footer li .twitter{ background-position: -55px 0;}
+.box-content .social-media-footer li .google{ background-position: -115px 0;}
+.box-content .social-media-footer li .linkedin{ background-position: -175px 0;}
+.box-content .social-media-footer li .youtube{ background-position: -230px 0;}
+.officer{margin-bottom: 40px;}
+.officer h6{font-size: 18px;}
+.officer .number{font-size: 14px; font-weight: 300;}
+.officer .address{font-size: 14px; font-weight: 300;}
+.align-right {float: right !important;}
+footer .box-content .newsletter form {position: relative; margin: 0px;}
+footer .box-content .newsletter form input { padding: 15px 10px; color: #838181 !important; background-color: #FFF; background-image: none; width: 100% !important;}
+footer .box-content .newsletter form .send { position: absolute; right: 5px; top: 10px;}
+footer .box-content .newsletter form .send {	background: url("../img/ico-mail.png") no-repeat 0 0 scroll; text-shadow: none;	background-color: #fff;	border: 0 none;	height: 34px; width: 34px;}
 
 /* ------------- Responsive Design ---------------*/
+@media (max-width: 1199px){
+	.col-md-4 {
+		width: 48.9% !important;
+	}
+	.col-md-2 {
+		width: 33.33% !important;
+	}
+}
+
+@media (max-width: 991px){
+	#how-we-do .navbar-nav {
+		float: none !important;
+		display: inline-block;
+		width: 100%;
+
+	}
+	#how-we-do .navbar-nav li a{
+		text-align: left !important;
+		width: 100%;
+	}
+
+	#how-we-do .secondary-menu {
+		height: auto !important;
+	}
+	.col-md-4 {
+		width: 100% !important;
+	}
+}
+
 @media (max-width: 768px){
 	.form-inline .form-group {
 		float: right !important;
@@ -591,21 +716,7 @@ footer{background-color:#39334C; padding: 40px 0 20px 0; color: #fff;}
 		float: right;
 		clear: both;
 	}
-}
-@media (max-width: 992px){
-	#how-we-do .navbar-nav {
-		float: none !important;
-		display: inline-block;
-		width: 100%;
-
+	.col-md-2 {
+		width: 100% !important;
 	}
-	#how-we-do .navbar-nav li a{
-		text-align: left !important;
-		width: 100%
-	}
-
-	#how-we-do .secondary-menu {
-		height: auto !important;
-	}
-	
 }
