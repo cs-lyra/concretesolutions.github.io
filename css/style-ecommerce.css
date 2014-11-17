@@ -95,7 +95,7 @@ input{outline: none !important;}
 	font-size: 18px;
 	background-color: transparent;
 	border: 1px solid #ccc;
-	width: 370px !important;
+	width: 330px !important;
 	height: 60px;
 	border-radius: 4px;
 	background: url(/img/ico-email.png) no-repeat 10px 15px;
@@ -115,13 +115,13 @@ input{outline: none !important;}
 }
 
 .response-error{
-	font-size: 0.7em;
+	font-size: 1.2em;
 	color: #c00;
 	float: right !important;
 }
 
 .response-success{
-	font-size: 0.7em;
+	font-size: 1.2em;
 	color: #ff8;
 	float: right !important;
 }
@@ -719,4 +719,10 @@ footer .box-content .newsletter form .send {	background: url("../img/ico-mail.pn
 	.col-md-2 {
 		width: 100% !important;
 	}
+
+@media (max-width: 400px){
+	.newsletter form input {width: 295px !important;}
+	.navbar-brand img {width: 230px;}
+}	
+
 }
