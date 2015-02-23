@@ -336,7 +336,12 @@ footer{background-color:#575656; padding: 40px 0 20px 0; color: #fff;}
 .space{padding-left: 5% !important;}
 .fix{padding: 0 0 0 35px; display: inline-block; clear: both;}
 .cloud{display: inline-block; clear: both;}
-
+/*-------------------VALUES--------------------*/
+ul.marked {
+    list-style: circle;
+    list-style-position: inside;
+    font-size: 20px;
+}
 /*-------------------TEAM--------------------*/
 .team{display: block;}
 .team li{display: inline-block; padding: 50px 50px 0 50px;}

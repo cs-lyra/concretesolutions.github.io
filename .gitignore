@@ -5,3 +5,4 @@ run_local.bat
 venv/
 *.swp
 *~
+.vagrant/
