@@ -1,7 +1,12 @@
 	<section id="call-action">
 		<div class="container">
-			<h2 class="text-call-action">Vamos fazer o produto digital certo!</h2>
-			<a href="mailto:comercial@concretesolutions.com.br" class="btn-lg btn-master text-button">fale conosco</a>
+			{% if page.is_carreiras == true %}
+                                <h2 class="text-call-action">Dificuldades com o Bizut ?</h2>
+				<a href="mailto:recrutamento@concretesolutions.com.br" class="btn-lg btn-master text-button">fale conosco</a>
+			{% else %}
+                                <h2 class="text-call-action">Vamos fazer o produto digital certo!</h2>
+				<a href="mailto:comercial@concretesolutions.com.br" class="btn-lg btn-master text-button">fale conosco</a>
+			{% endif %}
 		</div>
 	</section>
 	<footer>
@@ -142,85 +147,6 @@
 	        }
 	    }
 		});
-		{% endif %}
-		{% if page.is_carreiras == true %}
-			// var urlvagasCSSP = "https://spreadsheets.google.com/feeds/list/1zRxlDEsrpPsyPGHnw22So7mhsqAFtsKpwzRaRnGQhJA/od6/public/values?alt=json&sq=empresa%3DCS%20and%20base%3DSP";
-			// var urlvagasCSRJ = "https://spreadsheets.google.com/feeds/list/1zRxlDEsrpPsyPGHnw22So7mhsqAFtsKpwzRaRnGQhJA/od6/public/values?alt=json&sq=empresa%3DCS%20and%20base%3DRJ";
-			// var urlvagasFIX  = "https://spreadsheets.google.com/feeds/list/1zRxlDEsrpPsyPGHnw22So7mhsqAFtsKpwzRaRnGQhJA/od6/public/values?alt=json&sq=empresa%3DFIX";
-			// var urlvagasCR   = "https://spreadsheets.google.com/feeds/list/1zRxlDEsrpPsyPGHnw22So7mhsqAFtsKpwzRaRnGQhJA/od6/public/values?alt=json&sq=empresa%3DCR";
-			// $.getJSON(urlvagasCSSP, function (data) {
-			//     var output = "";
-			//     if (data.feed.entry == null) {
-			//     	$('#vagas-cssp').siblings('.col-md-12').toggle();
-			//     	$('#vagas-cssp').append('<div class="col-md-4"><h4>Sem vagas no momento!</h4></div>');
-			//     } else {
-			//         $.each(data.feed.entry, function (index, value) {
-			//             $("#vagas-cssp").append(fillVaga(value.gsx$index.$t,
-			// 											  value.gsx$titulo.$t,
-			// 											  $("#mail-sp").text(),
-			// 											  value.gsx$horario.$t,
-			// 											  value.gsx$local.$t,
-			// 											  value.gsx$competencias.$t,
-			// 											  value.gsx$extras.$t,
-			// 											  modelVaga));
-			//         });
-			//     }
-			// });
-			// $.getJSON(urlvagasCSRJ, function (data) {
-			//     var output = "";
-			//     if (data.feed.entry == null) {
-			//     	$('#vagas-csrj').siblings('.col-md-12').toggle();
-			//     	$('#vagas-csrj').append('<div class="col-md-4"><h4>Sem vagas no momento!</h4></div>');
-			//     } else {
-			//         $.each(data.feed.entry, function (index, value) {
-			//             $("#vagas-csrj").append(fillVaga(value.gsx$index.$t,
-			// 											  value.gsx$titulo.$t,
-			// 											  $("#mail-rj").text(),
-			// 											  value.gsx$horario.$t,
-			// 											  value.gsx$local.$t,
-			// 											  value.gsx$competencias.$t,
-			// 											  value.gsx$extras.$t,
-			// 											  modelVaga));
-			//         });
-			//     }
-			// });
-			// $.getJSON(urlvagasCR, function (data) {
-			//     var output = "";
-			//     if (data.feed.entry == null) {
-			//     	$('#vagas-cr').siblings('.col-md-12').toggle();
-			//         $("#vagas-cr").append('<div class="col-md-4"><h4>Sem vagas no momento!</h4></div>');
-			//     } else {
-			//         $.each(data.feed.entry, function (index, value) {
-			//             $("#vagas-cr").append(fillVaga(value.gsx$index.$t,
-			// 										  value.gsx$titulo.$t,
-			// 										  $("#mail-cr").text(),
-			// 										  value.gsx$horario.$t,
-			// 										  value.gsx$local.$t,
-			// 										  value.gsx$competencias.$t,
-			// 										  value.gsx$extras.$t,
-			// 										  modelVaga));
-			//         });
-			//     }
-			// });
-			// $.getJSON(urlvagasFIX, function (data) {
-			//     var output = "";
-			//     if (data.feed.entry == null) {
-			//     	$('#vagas-fix').siblings('.col-md-12').toggle();
-			//         $('#vagas-fix').append('<div class="col-md-4"><h4>Sem vagas no momento!</h4></div>');
-			//     } else {
-			//         $.each(data.feed.entry, function (index, value) {
-			//         	$("#vagas-fix").append(fillVaga(value.gsx$index.$t,
-			// 										  value.gsx$titulo.$t,
-			// 										  $("#mail-fix").text(),
-			// 										  value.gsx$horario.$t,
-			// 										  value.gsx$local.$t,
-			// 										  value.gsx$competencias.$t,
-			// 										  value.gsx$extras.$t,
-			// 										  modelVaga));
-			//         });
-			//     }
-			// });
-			// window.setTimeout(openVaga, 500);
 		{% endif %}
 		});
 	</script>
