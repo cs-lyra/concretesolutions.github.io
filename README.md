@@ -14,7 +14,7 @@ Utilizamos [Jekyll](http://jekyllrb.com) uma Gem do [Ruby](http://www.ruby-lang.
 
 3. Instale as Gems do [Jekyll](http://jekyllrb.com/) e do [Jekyll-Sitemap](https://github.com/jekyll/jekyll-sitemap):
     ```
-    sudo gem install jekyll jekyll-sitemap
+    sudo gem install jekyll jekyll-sitemap redcarpet
     ```
 
 4. Clone o projeto:
