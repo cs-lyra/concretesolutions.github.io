@@ -38,9 +38,9 @@
           </ul>
           <div class="newsletter">
             <p>Receba nossa newsletter:</p>
-            <form action="http://concretesolutions.us5.list-manage1.com/subscribe/post?u=0dd8265cc74731cec0c149863&amp;id=26dd60f3a9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+              <form novalidate>
               <div class="mc-field-group">
-                <input type="text" name="EMAIL" id="mce-EMAIL" placeholder="digite seu e-mail" autocomplete="off"> 
+                <input type="text" name="email" id="mce-EMAIL" placeholder="digite seu e-mail" autocomplete="off"> 
                 <label for="mce-EMAIL"></label>
               </div>
               <div style="position: absolute; left: -5000px;"><input type="text" name="b_0dd8265cc74731cec0c149863_26dd60f3a9" tabindex="-1" value=""></div>
@@ -229,4 +229,8 @@
     {% endif %}
     });
   </script>
-
+        <!-- Integração com o mailing list do rd -->
+        <script type="text/javascript" src="https://d335luupugsy2.cloudfront.net/js/integration/stable/rd-js-integration.min.js"></script> 
+        <script type="text/javascript">
+          RdIntegration.integrate('c65e64adb2cf1506b8e50c37586f919f', 'Newsletter Site'); 
+        </script>
