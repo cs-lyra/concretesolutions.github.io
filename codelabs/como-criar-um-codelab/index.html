@@ -1,0 +1,193 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Como criar um Codelab</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="como-criar-um-codelab"
+                  title="Como criar um Codelab"
+                  environment="web"
+                  feedback-link="http://google.com">
+    
+      <google-codelab-step label="Instalar os softwares necessários" duration="0">
+        <p>Três softwares são necessários para criar um Codelab: <code>Go</code>, <code>Node.js</code> e <code>claat</code></p>
+<h2 is-upgraded>Linguagem de programação Go</h2>
+<ul>
+<li>Baixar pelo <a href="http://golang.org/dl" target="_blank">site oficial</a></li>
+<li>Extrair o conteúdo da pasta compactada no diretório padrão <code>/usr/local/go</code></li>
+<li>Configurar as seguintes variáveis de ambiente:  <pre><code>GOROOT=/usr/local/go
+GOPATH=$HOME/go
+PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+</code></pre>
+</li>
+</ul>
+<h2 is-upgraded>Ambiente de execução Node.js (versão 10+)</h2>
+<p>Baixar pelo <a href="http://nodejs.org/en/download" target="_blank">site oficial</a></p>
+<p>ou no Ubuntu pelo comando:</p>
+<pre><code>$ sudo apt install nodejs npm
+</code></pre>
+<h2 is-upgraded>claat: a ferramenta de linha de comando do Codelabs</h2>
+<p>Com o Go já configurado, execute o seguinte comando:</p>
+<pre><code>go get github.com/googlecodelabs/tools/claat
+</code></pre>
+<p>O binário do <code>claat</code> estará em <code>~/go/bin</code>. Caso seja necessário, dê permissão de execução ao arquivo com o comando <code>chmod +x claat</code></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Executar o projeto de Codelabs da Concrete localmente" duration="0">
+        <ol type="1">
+<li>Clonar o projeto através do comando <code>git clone https://github.com/concretesolutions/concrete-codelabs.git</code></li>
+<li>Ir até o diretório <code>site</code> dentro do projeto clonado</li>
+<li>Executar o comando <code>npm install</code> para instalar as dependências do projeto clonado</li>
+<li>Executar o comando <code>sudo npm install -g gulp-cli</code> para instalar globalmente o <code>Gulp</code>, automatizador de tarefas em JavaScript responsável por preparar e servir o projeto localmente</li>
+<li>Executar o comando <code>gulp serve</code> para servir localmente o projeto no endereço padrão <code>http://localhost:8000</code><br><br><img src="img/e6f1ed56a4f1045f.png"><br><br></li>
+<li>Acessar o endereço <code>http://localhost:8000</code> no navegador e ver o site hospedado localmente  TODO: foto do site sem nenhum Codelab criado</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Criar seu primeiro Codelab" duration="0">
+        <h2 is-upgraded>Criando o Codelab</h2>
+<p>Começamos criando um arquivo Markdown no diretório <code>codelabs</code> dentro do diretório <code>site</code></p>
+<pre><code>$ touch meu-primeiro-codelab.md
+</code></pre>
+<p>Obs.: evitar usar espaços e caracteres especiais no nome do arquivo</p>
+<h2 is-upgraded>Estruturando o Codelab</h2>
+<p>Um Codelab possui uma estrutura básica encabeçada por seus dados de identificação. Para criar um Codelab, basta seguir o modelo:</p>
+<pre><code>summary: Meu Primeiro Codelab
+id: meu-primeiro-codelab
+categories: Android
+tags: android, tutorial, codelab
+status: Published
+authors: Leandro Leite
+Feedback Link: http://github.com/cs-leandro-leite
+</code></pre>
+<p>É uma boa prática que a id do seu Codelab seja igual ao nome do seu arquivo sem a extensão e o seu <em>Summary</em> seja a escrita natural da id/nome do arquivo.</p>
+<p>O <code>status: Published</code> é padrão para todos os Codelabs que criaremos aqui, pois todos estarão em estado &#34;Publicado&#34;.</p>
+<p>O <em>Feedback Link</em> é um link usado para reportar bugs encontrados no codelab.</p>
+<h2 is-upgraded>Adicionando conteúdo</h2>
+<p>O título do seu Codelab será definido pelo header principal do seu arquivo Markdown</p>
+<pre><code># Meu Primeiro Codelab
+</code></pre>
+<p>Cada passo do seu Codelab será definido pelos headers secundários do seu arquivo Markdown</p>
+<pre><code>## Meu primeiro passo
+Duration: 1
+</code></pre>
+<p>O campo <code>Duration</code> e seu valor são traduzidos como a duração do passo do seu Codelab em minutos. Caso esse campo seja descrito em todos os passos, o seu Codelab terá um tempo total estimado e isso será exibido ao leitor conforme o mesmo for avançando.</p>
+<p>É possível fazer comentários no Markdown do seu Codelab usando comentários HTML</p>
+<pre><code>&lt;!-- Esse é o primeiro passo do meu primeiro Codelab --&gt;
+## Meu primeiro passo
+Duration: 1
+</code></pre>
+<p>Caso seja necessário usar imagens durante a criação do Codelab, opte por baixar e disponibilizar essas imagens em um diretório interno ao diretório <code>assets</code> com o mesmo nome do seu arquivo *.md</p>
+<p class="image-container"><img src="img/e0ac123437c97d73.png"></p>
+<h2 is-upgraded>Resultado</h2>
+<p>Após toda a escrita, o seu Codelab deve ter uma estrutura parecida com este exemplo:</p>
+<pre><code>summary: Meu Primeiro Codelab
+id: meu-primeiro-codelab
+categories: Tutorial
+tags: codelab, tutorial
+status: Published
+authors: Leandro Leite
+Feedback Link: http://github.com/leanite
+
+# Meu Primeiro Codelab
+
+&lt;!-- Esse é o primeiro passo do meu primeiro Codelab --&gt;
+## Meu primeiro passo
+Duration: 1
+
+Am ameno dore latiremo, me matiremo omenare reo latire. Me dimere matiro omenare ameno interimo reo dori latiremo. Emulari dori am reo adapare, imperavi me matiremo latiremo.  
+Me interimo reo dori am, matiremo dore dimere dori me. Reo emulari imperavi adapare latiremo, interimo dore am omenare. Omenare dimere me interimo matiro, dori imperavi latiremo matiremo. Interimo matiremo dore emulari adapare, am ameno latiremo dimere.
+
+&lt;!-- Esse é o segundo passo do meu primeiro Codelab --&gt;
+## Meu segundo passo
+Duration: 3
+
+Am ameno dore latiremo, me matiremo omenare reo latire. Me dimere matiro omenare ameno interimo reo dori latiremo. Emulari dori am reo adapare, imperavi me matiremo latiremo. Me interimo reo dori am, matiremo dore dimere dori me.  
+Reo emulari imperavi adapare latiremo, interimo dore am omenare. Omenare dimere me interimo matiro, dori imperavi latiremo matiremo. Interimo matiremo dore emulari adapare, am ameno latiremo dimere.
+
+&lt;!-- Esse é conclusão do meu primeiro Codelab --&gt;
+## Conclusão
+Duration: 1
+
+Tchau o/
+
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Visualizar seu primeiro Codelab" duration="0">
+        <h2 is-upgraded>Exportando seu Codelab</h2>
+<p>Após finalizar a escrita do seu arquivo Markdown, volte para o diretório <code>codelabs</code> e execute o seguinte comando:</p>
+<pre><code>$ claat export como-criar-um-codelab.md
+</code></pre>
+<p>Ao exportar o seu Markdown, o <code>claat</code> irá gerar um diretório com o mesmo nome do seu arquivo *.md com os arquivos do seu Codelab</p>
+<p class="image-container"><img src="img/70322fe299c5bcac.png"></p>
+<p>Para servir novamente o site localmente, volte ao diretório <code>site</code> e execute o <code>gulp</code> com um parâmetro extra indicando o diretório <code>codelabs</code>, onde está o seu Codelab recém exportado</p>
+<pre><code>$ gulp serve --codelabs-dir=codelabs
+</code></pre>
+<p>Acesse novamente o endereço <code>http://localhost:8000</code> no navegador e veja o site hospedado localmente exibindo o seu Codelab na página principal</p>
+<p>TODO: print aqui</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Ganhar produtividade ao escrever um Codelab" duration="0">
+        <p>Escrever um documento em Markdown pode trazer algumas surpresas no resultado final, mesmo com os plugins de pré-visualização de Markdown que existem em alguns editores de texto. Existe uma maneira de visualizar o resultado final do seu Codelab sem ter que fazer todos os passos necessários para publicação final.</p>
+<p>Normalmente, escrevemos o arquivo *.md, usamos o <code>claat</code> para exportar e gerar o diretório com o arquivo *.html e reiniciamos o servidor que o Gulp está rodando. Podemos simplificar esse passo usando o comando <code>claat serve</code> no diretório <code>codelabs</code>. Esse comando faz com que o claat inicie um servidor local apenas para disponibilizar os Codelabs do diretório corrente, ignorando a estrutura do site que armazena os codelabs.</p>
+<pre><code>$ cd codelabs
+$ claat export como-criar-um-codelab.md &amp;&amp; claat serve
+
+</code></pre>
+<p class="image-container"><img src="img/9d179482c56cc128.png"></p>
+<p>O <code>claat</code> servirá o diretório <code>codelabs</code> no endereço <code>http://localhost:9000</code> e abrirá uma nova aba no seu navegador automaticamente ao executar o comando <code>claat serve</code>.</p>
+<p class="image-container"><img src="img/ba5b65dbca31efbf.png"></p>
+<p>Para visualizar o seu Codelab, basta clicar no diretório que foi exportado pelo <code>claat</code></p>
+<p class="image-container"><img src="img/1712ab0ee5e1374f.png"></p>
+<p>Obs.: o <code>claat</code> não possui <em>hot reload</em>, ou seja, toda vez que uma alteração for feita, é necessário parar o servidor, exportar novamente o arquivo *.md e iniciar o serviço novamente através do comando <code>claat export como-criar-um-codelab.md &amp;&amp; claat serve</code>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Extra: abrindo um Pull Request para o repositório da Concrete" duration="0">
+        
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Bônus: dicas úteis de Markdown" duration="0">
+        
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

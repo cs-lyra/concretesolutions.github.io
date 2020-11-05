@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-11-05T19:15:52-03:00",
+  "id": "como-criar-um-codelab",
+  "duration": 0,
+  "title": "Como criar um Codelab",
+  "authors": "Leandro Leite",
+  "summary": "Como criar um Codelab",
+  "source": "como-criar-um-codelab.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "android"
+  ],
+  "tags": [
+    "codelab",
+    "tutorial"
+  ],
+  "feedback": "http://google.com",
+  "url": "como-criar-um-codelab"
+}
