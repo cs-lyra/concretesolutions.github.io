@@ -147,7 +147,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           >
           </paper-listbox>
         </paper-dropdown-menu>
-        </div>
+        <paper-dropdown-menu
+          label="Filter by category"
+          class="dropdown-filter"
+          no-label-float
+          noink no-animations
+        >
+          <paper-listbox
+            id="categorylist"
+            slot="dropdown-content"
+            class="dropdown-content"
+            on-iron-activate="onCategoryActivate"
+            attr-for-selected="filter"
+          >
+              <paper-item filter="android">android</paper-item>
+                <paper-item filter="kotlin">kotlin</paper-item>
+                
+          </paper-listbox>
+        </paper-dropdown-menu></div>
 
       <card-sorter id="cards" class="site-width">
         
@@ -158,17 +175,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                data-category="android"
                data-title="Como criar um Codelab"
                data-duration="0"
-               data-updated="2020-11-05T19:15:52-03:00"
+               data-updated="2020-11-18T16:46:02-03:00"
                data-tags="codelab,tutorial"
                data-pin="">
               <div class="description">Como criar um Codelab</div>
               <div class="card-duration">
                 <span></span>
-                <span>Atualizado em Nov 5, 2020</span>
+                <span>Atualizado em Nov 18, 2020</span>
               </div>
               <div class="card-footer">
                 <div class="category-icon android-icon"></div>
                 <paper-button class="android-bg">Iniciar</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/codelabs/simple-koin/index.html?index=..%2F..index" on-tap="navigate"
+               class="codelab-card category-kotlin"
+               data-category="kotlin"
+               data-title="Criando seu próprio Koin simplificado"
+               data-duration="0"
+               data-updated="2020-11-18T17:19:22-03:00"
+               data-tags="kotlin,tutorial"
+               data-pin="">
+              <div class="description">Criando seu próprio Koin simplificado</div>
+              <div class="card-duration">
+                <span></span>
+                <span>Atualizado em Nov 18, 2020</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon kotlin-icon"></div>
+                <paper-button class="kotlin-bg">Iniciar</paper-button>
               </div>
             </a>
           
