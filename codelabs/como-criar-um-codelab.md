@@ -8,7 +8,7 @@ Feedback Link: http://google.com
 
 # Como criar um Codelab
 
-## Instalar os softwares necessários
+## Instalando os softwares necessários
 
 Três softwares são necessários para criar um Codelab: `Go`, `Node.js` e `claat`
 
@@ -28,12 +28,11 @@ Três softwares são necessários para criar um Codelab: `Go`, `Node.js` e `claa
     ```
 
 ### Ambiente de execução Node.js (versão 10+)         
-Baixar pelo [site oficial](http://nodejs.org/en/download) 
-
-ou no Ubuntu pelo comando: 
+Baixar pelo Ubuntu com os comandos: 
 
 ```
-$ sudo apt install nodejs npm
+$ curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+$ sudo apt install nodejs
 ```
 
 ### claat: a ferramenta de linha de comando do Codelabs
@@ -46,11 +45,11 @@ go get github.com/googlecodelabs/tools/claat
 
 O binário do `claat` estará em `~/go/bin`. Caso seja necessário, dê permissão de execução ao arquivo com o comando `chmod +x claat`
 
-## Executar o projeto de Codelabs da Concrete localmente
+## Executando o projeto de Codelabs da Concrete localmente
 
 1. Clonar o projeto através do comando `git clone https://github.com/concretesolutions/concrete-codelabs.git`
 
-1. Ir até o diretório `site` dentro do projeto clonado
+1. Ir até o diretório raiz do projeto clonado
 
 1. Executar o comando `npm install` para instalar as dependências do projeto clonado
 
@@ -62,13 +61,13 @@ O binário do `claat` estará em `~/go/bin`. Caso seja necessário, dê permiss�
     <br><br>
 1. Acessar o endereço `http://localhost:8000` no navegador e ver o site hospedado localmente
 
-    TODO: foto do site sem nenhum Codelab criado
+![](assets/como-criar-um-codelab/print-codelabs-vazio.png)
 
-## Criar seu primeiro Codelab
+## Criando seu primeiro Codelab
 
 ### Criando o Codelab
 
-Começamos criando um arquivo Markdown no diretório `codelabs` dentro do diretório `site`
+Começamos criando um arquivo Markdown no diretório `codelabs` dentro do diretório raiz do projeto
 
 ```
 $ touch meu-primeiro-codelab.md
@@ -162,7 +161,7 @@ Tchau o/
 
 ```
 
-## Visualizar seu primeiro Codelab
+## Visualizando seu primeiro Codelab
 
 ### Exportando seu Codelab
 
@@ -184,9 +183,9 @@ $ gulp serve --codelabs-dir=codelabs
 
 Acesse novamente o endereço `http://localhost:8000` no navegador e veja o site hospedado localmente exibindo o seu Codelab na página principal
 
-TODO: print aqui
+![](assets/como-criar-um-codelab/print-codelabs-dir.png)
 
-## Ganhar produtividade ao escrever um Codelab
+## Ganhando produtividade ao escrever um Codelab
 
 Escrever um documento em Markdown pode trazer algumas surpresas no resultado final, mesmo com os plugins de pré-visualização de Markdown que existem em alguns editores de texto. Existe uma maneira de visualizar o resultado final do seu Codelab sem ter que fazer todos os passos necessários para publicação final.
 
@@ -211,5 +210,3 @@ Para visualizar o seu Codelab, basta clicar no diretório que foi exportado pelo
 Obs.: o `claat` não possui *hot reload*, ou seja, toda vez que uma alteração for feita, é necessário parar o servidor, exportar novamente o arquivo *.md e iniciar o serviço novamente através do comando `claat export como-criar-um-codelab.md && claat serve`.
 
 ## Extra: abrindo um Pull Request para o repositório da Concrete
-
-## Bônus: dicas úteis de Markdown
