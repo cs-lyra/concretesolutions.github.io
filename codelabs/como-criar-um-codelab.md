@@ -189,7 +189,7 @@ Acesse novamente o endereço `http://localhost:8000` no navegador e veja o site 
 
 Escrever um documento em Markdown pode trazer algumas surpresas no resultado final, mesmo com os plugins de pré-visualização de Markdown que existem em alguns editores de texto. Existe uma maneira de visualizar o resultado final do seu Codelab sem ter que fazer todos os passos necessários para publicação final.
 
-Normalmente, escrevemos o arquivo *.md, usamos o `claat` para exportar e gerar o diretório com o arquivo *.html e reiniciamos o servidor que o Gulp está rodando. Podemos simplificar esse passo usando o comando `claat serve` no diretório `codelabs`. Esse comando faz com que o claat inicie um servidor local apenas para disponibilizar os Codelabs do diretório corrente, ignorando a estrutura do site que armazena os codelabs.
+Normalmente, escrevemos o arquivo *.md, usamos o `claat` para exportar e gerar o diretório com o arquivo *.html e reiniciamos o servidor que o Gulp está rodando. Podemos simplificar esse passo usando o comando `claat serve` no diretório `codelabs`. Esse comando faz com que o claat inicie um servidor local apenas para disponibilizar os Codelabs do diretório corrente, ignorando a estrutura do site que armazena os Codelabs.
 
 ```
 $ cd codelabs
@@ -210,3 +210,38 @@ Para visualizar o seu Codelab, basta clicar no diretório que foi exportado pelo
 Obs.: o `claat` não possui *hot reload*, ou seja, toda vez que uma alteração for feita, é necessário parar o servidor, exportar novamente o arquivo *.md e iniciar o serviço novamente através do comando `claat export como-criar-um-codelab.md && claat serve`.
 
 ## Extra: abrindo um Pull Request para o repositório da Concrete
+
+Primeiramente, precisamos incluir o arquivo `*.md` do Codelab que criamos na pasta `codelabs` do projeto de hospedagem local, o `concrete-codelabs`, que clonamos anteriormente.
+
+Em seguida, devemos exportar esse Codelab executando o comando `claat export [nome do meu markdown de codelab].md` dentro da pasta `codelabs` como fizemos anteriormente.
+
+Os arquivos que vamos submeter no Pull Request são os seguintes:
+
+* Diretório com o Codelab convertido
+* Pasta assets e as imagens do seu Codelab quando necessário
+* O markdown do seu Codelab
+* O `index.html` que está no diretório `build`
+
+Copie esses arquivos, pois vamos abrir um Pull Request no repositório do site estático. Para isso, precisamos clonar o projeto do github.io através do comando `git clone https://github.com/concretesolutions/concretesolutions.github.io.git`
+
+Já com o projeto clonado, crie uma branch a partir da branch `main` com o nome da `ID` do seu Codelab.
+
+```
+git checkout -b nome-do-meu-codelab
+```
+
+Em seguida, copie nessa branch recém criada os arquivos que separamos para subida no passo anterior. A nossa subida ficará parecida com este exemplo:
+
+![](assets/como-criar-um-codelab/print-git-push.png)
+
+Podemos, então, adicionar os arquivos, commitar e realizar um push da nossa branch recém criada para o repositório remoto. Em seguida, precisamos ir até a parte de Pull Requests no [GitHub do projeto](https://github.com/concretesolutions/concretesolutions.github.io/pulls) e clicar em `New pull request`.
+
+![](assets/como-criar-um-codelab/print-abrir-pr.png)
+
+Finalmente, definimos a branch `main` como **base** e a nossa branch recém criada como **compare**. Revisamos o Pull Request para saber se está tudo certo e adicionamos um título significativo para que os avaliadores consigam entender do que se trata sem qualquer dificuldade. Se necessário, podemos incluir um breve comentário no campo disponibilizado.
+
+![](assets/como-criar-um-codelab/print-create-pr.png)
+
+Finalmente, clicamos em `Create pull request` e aguardamos que um avaliador aprove ou aponte possíveis correções no nosso Codelab.
+
+Bons PRs, pessoal!😁

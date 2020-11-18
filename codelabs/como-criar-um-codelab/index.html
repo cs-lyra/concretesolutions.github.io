@@ -157,7 +157,7 @@ Tchau o/
     
       <google-codelab-step label="Ganhando produtividade ao escrever um Codelab" duration="0">
         <p>Escrever um documento em Markdown pode trazer algumas surpresas no resultado final, mesmo com os plugins de pré-visualização de Markdown que existem em alguns editores de texto. Existe uma maneira de visualizar o resultado final do seu Codelab sem ter que fazer todos os passos necessários para publicação final.</p>
-<p>Normalmente, escrevemos o arquivo *.md, usamos o <code>claat</code> para exportar e gerar o diretório com o arquivo *.html e reiniciamos o servidor que o Gulp está rodando. Podemos simplificar esse passo usando o comando <code>claat serve</code> no diretório <code>codelabs</code>. Esse comando faz com que o claat inicie um servidor local apenas para disponibilizar os Codelabs do diretório corrente, ignorando a estrutura do site que armazena os codelabs.</p>
+<p>Normalmente, escrevemos o arquivo *.md, usamos o <code>claat</code> para exportar e gerar o diretório com o arquivo *.html e reiniciamos o servidor que o Gulp está rodando. Podemos simplificar esse passo usando o comando <code>claat serve</code> no diretório <code>codelabs</code>. Esse comando faz com que o claat inicie um servidor local apenas para disponibilizar os Codelabs do diretório corrente, ignorando a estrutura do site que armazena os Codelabs.</p>
 <pre><code>$ cd codelabs
 $ claat export como-criar-um-codelab.md &amp;&amp; claat serve
 
@@ -173,7 +173,28 @@ $ claat export como-criar-um-codelab.md &amp;&amp; claat serve
       </google-codelab-step>
     
       <google-codelab-step label="Extra: abrindo um Pull Request para o repositório da Concrete" duration="0">
-        
+        <p>Primeiramente, precisamos incluir o arquivo <code>*.md</code> do Codelab que criamos na pasta <code>codelabs</code> do projeto de hospedagem local, o <code>concrete-codelabs</code>, que clonamos anteriormente.</p>
+<p>Em seguida, devemos exportar esse Codelab executando o comando <code>claat export [nome do meu markdown de codelab].md</code> dentro da pasta <code>codelabs</code> como fizemos anteriormente.</p>
+<p>Os arquivos que vamos submeter no Pull Request são os seguintes:</p>
+<ul>
+<li>Diretório com o Codelab convertido</li>
+<li>Pasta assets e as imagens do seu Codelab quando necessário</li>
+<li>O markdown do seu Codelab</li>
+<li>O <code>index.html</code> que está no diretório <code>build</code></li>
+</ul>
+<p>Copie esses arquivos, pois vamos abrir um Pull Request no repositório do site estático. Para isso, precisamos clonar o projeto do github.io através do comando <code>git clone https://github.com/concretesolutions/concretesolutions.github.io.git</code></p>
+<p>Já com o projeto clonado, crie uma branch a partir da branch <code>main</code> com o nome da <code>ID</code> do seu Codelab.</p>
+<pre><code>git checkout -b nome-do-meu-codelab
+</code></pre>
+<p>Em seguida, copie nessa branch recém criada os arquivos que separamos para subida no passo anterior. A nossa subida ficará parecida com este exemplo:</p>
+<p class="image-container"><img src="img/477f1ea381ba2dd0.png"></p>
+<p>Podemos, então, adicionar os arquivos, commitar e realizar um push da nossa branch recém criada para o repositório remoto. Em seguida, precisamos ir até a parte de Pull Requests no <a href="https://github.com/concretesolutions/concretesolutions.github.io/pulls" target="_blank">GitHub do projeto</a> e clicar em <code>New pull request</code>.</p>
+<p class="image-container"><img src="img/b68a8126fa51ad2e.png"></p>
+<p>Finalmente, definimos a branch <code>main</code> como <strong>base</strong> e a nossa branch recém criada como <strong>compare</strong>. Revisamos o Pull Request para saber se está tudo certo e adicionamos um título significativo para que os avaliadores consigam entender do que se trata sem qualquer dificuldade. Se necessário, podemos incluir um breve comentário no campo disponibilizado.</p>
+<p class="image-container"><img src="img/bc37e2160e511c81.png"></p>
+<p>Finalmente, clicamos em <code>Create pull request</code> e aguardamos que um avaliador aprove ou aponte possíveis correções no nosso Codelab.</p>
+<p>Bons PRs, pessoal!😁</p>
+
 
       </google-codelab-step>
     
