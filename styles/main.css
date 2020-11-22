@@ -1342,6 +1342,12 @@ ul, li {
   background-position: 0 50%;
 }
 
+.card-footer .author-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
 .card-pin {
   position: absolute;
   left: 7px;
