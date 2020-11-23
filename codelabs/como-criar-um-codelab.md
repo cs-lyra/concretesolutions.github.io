@@ -10,22 +10,14 @@ Feedback Link: http://google.com
 
 ## Instalando os softwares necessários
 
-Três softwares são necessários para criar um Codelab: `Go`, `Node.js` e `claat`
+Três softwares são necessários para criar um Codelab: `Go`, `Node.js` e `CLaaT`
 
 ### Linguagem de programação Go
+Baixar pelo Ubuntu com o comando:
 
-- Baixar pelo [site oficial](http://golang.org/dl)
-
-- Extrair o conteúdo da pasta compactada no diretório padrão `/usr/local/go`
-
-- Configurar as seguintes variáveis de ambiente:
-
-    ```
-    GOROOT=/usr/local/go
-    GOPATH=$HOME/go
-    PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-
-    ```
+```
+sudo apt install golang
+```
 
 ### Ambiente de execução Node.js (versão 10+)         
 Baixar pelo Ubuntu com os comandos: 
@@ -35,15 +27,21 @@ $ curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 $ sudo apt install nodejs
 ```
 
-### claat: a ferramenta de linha de comando do Codelabs
+### CLaaT: a ferramenta de linha de comando do Codelabs
 
 Com o Go já configurado, execute o seguinte comando: 
 
 ```
-go get github.com/googlecodelabs/tools/claat
+$ go get github.com/googlecodelabs/tools/claat
 ```
 
-O binário do `claat` estará em `~/go/bin`. Caso seja necessário, dê permissão de execução ao arquivo com o comando `chmod +x claat`
+O binário do `CLaaT` estará em `~/go/bin`. Caso seja necessário, dê permissão de execução ao arquivo com o comando `chmod +x claat`.
+
+Copie o binário do `CLaaT` para `/usr/local/bin` com o seguinte comando:
+
+```
+$ sudo cp ~/go/bin/claat /usr/local/bin
+```
 
 ## Executando o projeto de Codelabs da Concrete localmente
 
@@ -209,7 +207,45 @@ Para visualizar o seu Codelab, basta clicar no diretório que foi exportado pelo
 
 Obs.: o `claat` não possui *hot reload*, ou seja, toda vez que uma alteração for feita, é necessário parar o servidor, exportar novamente o arquivo *.md e iniciar o serviço novamente através do comando `claat export como-criar-um-codelab.md && claat serve`.
 
-## Extra: abrindo um Pull Request para o repositório da Concrete
+## Adicionando um autor ao Codelab
+
+É possível adicionar um autor a um Codelab. Para isso, basta seguir os seguintes passos:
+
+1. Caso seja a primeira vez criando um Codelab, é necessário adicionar o seu avatar no projeto. Para isso, adicione uma foto sua no diretório `app/images/authors`. Como o avatar do site possui 42x42, evite adicionar uma imagem muito grande e não se esqueça de manter a proporção 1:1 da imagem.
+2. Adicione manualmente a sua autoria no seu Codelab em `index.html` no diretório `build` seguindo este modelo:
+
+    ```
+    <img class="author-avatar" src="images/authors/[seu avatar].jpg" title="[Seu Nome]">
+    ```
+
+    Adicionado a um Codelab, especificamente na `div` com a classe `card-footer`, ficará da seguinte forma:
+
+    ```
+    <a href="/codelabs/simple-koin/index.html?index=..%2F..index" on-tap="navigate"
+        class="codelab-card category-kotlin"
+        data-category="kotlin"
+        data-title="Criando seu próprio Koin simplificado"
+        data-duration="0"
+        data-updated="2020-11-18T17:19:22-03:00"
+        data-tags="kotlin,tutorial"
+        data-pin="">
+        <div class="description">Criando seu próprio Koin simplificado</div>
+        <div class="card-duration">
+            <span></span>
+            <span>Atualizado em Nov 18, 2020</span>
+        </div>
+        <div class="card-footer">
+            <img class="author-avatar" src="images/authors/leite.jpg" title="Leandro Leite">
+            <div class="category-icon kotlin-icon"></div>
+            <paper-button class="kotlin-bg">Iniciar</paper-button>
+        </div>
+    </a>
+
+    ```
+
+    Obs.: o arquivo `build/index.html` é gerado automaticamente toda vez que o comando `gulp serve` é executado, então tenha certeza de adicionar a sua autoria quando estiver copiando o `index.html` para abrir um Pull Request. Não é possível visualizar o autor do Codelab no projeto hospedado localmente.
+
+## Abrindo um Pull Request para o repositório da Concrete
 
 Primeiramente, precisamos incluir o arquivo `*.md` do Codelab que criamos na pasta `codelabs` do projeto de hospedagem local, o `concrete-codelabs`, que clonamos anteriormente.
 

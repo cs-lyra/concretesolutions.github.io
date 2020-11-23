@@ -28,27 +28,24 @@
                   feedback-link="http://google.com">
     
       <google-codelab-step label="Instalando os softwares necessários" duration="0">
-        <p>Três softwares são necessários para criar um Codelab: <code>Go</code>, <code>Node.js</code> e <code>claat</code></p>
+        <p>Três softwares são necessários para criar um Codelab: <code>Go</code>, <code>Node.js</code> e <code>CLaaT</code></p>
 <h2 is-upgraded>Linguagem de programação Go</h2>
-<ul>
-<li>Baixar pelo <a href="http://golang.org/dl" target="_blank">site oficial</a></li>
-<li>Extrair o conteúdo da pasta compactada no diretório padrão <code>/usr/local/go</code></li>
-<li>Configurar as seguintes variáveis de ambiente:  <pre><code>GOROOT=/usr/local/go
-GOPATH=$HOME/go
-PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+<p>Baixar pelo Ubuntu com o comando:</p>
+<pre><code>sudo apt install golang
 </code></pre>
-</li>
-</ul>
 <h2 is-upgraded>Ambiente de execução Node.js (versão 10+)</h2>
 <p>Baixar pelo Ubuntu com os comandos:</p>
 <pre><code>$ curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 $ sudo apt install nodejs
 </code></pre>
-<h2 is-upgraded>claat: a ferramenta de linha de comando do Codelabs</h2>
+<h2 is-upgraded>CLaaT: a ferramenta de linha de comando do Codelabs</h2>
 <p>Com o Go já configurado, execute o seguinte comando:</p>
-<pre><code>go get github.com/googlecodelabs/tools/claat
+<pre><code>$ go get github.com/googlecodelabs/tools/claat
 </code></pre>
-<p>O binário do <code>claat</code> estará em <code>~/go/bin</code>. Caso seja necessário, dê permissão de execução ao arquivo com o comando <code>chmod +x claat</code></p>
+<p>O binário do <code>CLaaT</code> estará em <code>~/go/bin</code>. Caso seja necessário, dê permissão de execução ao arquivo com o comando <code>chmod +x claat</code>.</p>
+<p>Copie o binário do <code>CLaaT</code> para <code>/usr/local/bin</code> com o seguinte comando:</p>
+<pre><code>$ sudo cp ~/go/bin/claat /usr/local/bin
+</code></pre>
 
 
       </google-codelab-step>
@@ -167,12 +164,44 @@ $ claat export como-criar-um-codelab.md &amp;&amp; claat serve
 <p class="image-container"><img src="img/ba5b65dbca31efbf.png"></p>
 <p>Para visualizar o seu Codelab, basta clicar no diretório que foi exportado pelo <code>claat</code></p>
 <p class="image-container"><img src="img/1712ab0ee5e1374f.png"></p>
-<p>Obs.: o <code>claat</code> não possui <em>hot reload</em>, ou seja, toda vez que uma alteração for feita, é necessário parar o servidor, exportar novamente o arquivo *.md e iniciar o serviço novamente através do comando <code>claat export como-criar-um-codelab.md && claat serve</code>.</p>
+<p>Obs.: o <code>claat</code> não possui <em>hot reload</em>, ou seja, toda vez que uma alteração for feita, é necessário parar o servidor, exportar novamente o arquivo *.md e iniciar o serviço novamente através do comando <code>claat export como-criar-um-codelab.md &amp;&amp; claat serve</code>.</p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Extra: abrindo um Pull Request para o repositório da Concrete" duration="0">
+      <google-codelab-step label="Adicionando um autor ao Codelab" duration="0">
+        <p>É possível adicionar um autor a um Codelab. Para isso, basta seguir os seguintes passos:</p>
+<ol type="1">
+<li>Caso seja a primeira vez criando um Codelab, é necessário adicionar o seu avatar no projeto. Para isso, adicione uma foto sua no diretório <code>app/images/authors</code>. Como o avatar do site possui 42x42, evite adicionar uma imagem muito grande e não se esqueça de manter a proporção 1:1 da imagem.</li>
+<li>Adicione manualmente a sua autoria no seu Codelab em <code>index.html</code> no diretório <code>build</code> seguindo este modelo:  <pre><code>&lt;img class=&#34;author-avatar&#34; src=&#34;images/authors/[seu avatar].jpg&#34; title=&#34;[Seu Nome]&#34;&gt;
+</code></pre>
+Adicionado a um Codelab, especificamente na <code>div</code> com a classe <code>card-footer</code>, ficará da seguinte forma:  <pre><code>&lt;a href=&#34;/codelabs/simple-koin/index.html?index=..%2F..index&#34; on-tap=&#34;navigate&#34;
+    class=&#34;codelab-card category-kotlin&#34;
+    data-category=&#34;kotlin&#34;
+    data-title=&#34;Criando seu próprio Koin simplificado&#34;
+    data-duration=&#34;0&#34;
+    data-updated=&#34;2020-11-18T17:19:22-03:00&#34;
+    data-tags=&#34;kotlin,tutorial&#34;
+    data-pin=&#34;&#34;&gt;
+    &lt;div class=&#34;description&#34;&gt;Criando seu próprio Koin simplificado&lt;/div&gt;
+    &lt;div class=&#34;card-duration&#34;&gt;
+        &lt;span&gt;&lt;/span&gt;
+        &lt;span&gt;Atualizado em Nov 18, 2020&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;card-footer&#34;&gt;
+        &lt;img class=&#34;author-avatar&#34; src=&#34;images/authors/leite.jpg&#34; title=&#34;Leandro Leite&#34;&gt;
+        &lt;div class=&#34;category-icon kotlin-icon&#34;&gt;&lt;/div&gt;
+        &lt;paper-button class=&#34;kotlin-bg&#34;&gt;Iniciar&lt;/paper-button&gt;
+    &lt;/div&gt;
+&lt;/a&gt;
+</code></pre>
+Obs.: o arquivo <code>build/index.html</code> é gerado automaticamente toda vez que o comando <code>gulp serve</code> é executado, então tenha certeza de adicionar a sua autoria quando estiver copiando o <code>index.html</code> para abrir um Pull Request. Não é possível visualizar o autor do Codelab no projeto hospedado localmente.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Abrindo um Pull Request para o repositório da Concrete" duration="0">
         <p>Primeiramente, precisamos incluir o arquivo <code>*.md</code> do Codelab que criamos na pasta <code>codelabs</code> do projeto de hospedagem local, o <code>concrete-codelabs</code>, que clonamos anteriormente.</p>
 <p>Em seguida, devemos exportar esse Codelab executando o comando <code>claat export [nome do meu markdown de codelab].md</code> dentro da pasta <code>codelabs</code> como fizemos anteriormente.</p>
 <p>Os arquivos que vamos submeter no Pull Request são os seguintes:</p>
