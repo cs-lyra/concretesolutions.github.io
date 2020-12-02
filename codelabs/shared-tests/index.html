@@ -1,0 +1,164 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Shared Tests</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="shared-tests"
+                  title="Shared Tests"
+                  environment="web"
+                  feedback-link="http://github.com/leanite">
+    
+      <google-codelab-step label="Introdução" duration="3">
+        <p>Testes são extremamente importantes para o processo de desenvolvimento de Apps uma vez que, com eles, podemos antecipar problemas e validar o comportamento do nosso código, aumentando assim a confiança das nossas entregas. No Android temos três tipos de teste que podem ser definidos da seguinte forma:</p>
+<p class="image-container"><img src="img/3dde852abb17ec32.png"></p>
+<ol type="1">
+<li>Unitários: Execução rápida, rodam local de forma simples porém possuem baixa confiança por não testarem componentes de UI;</li>
+<li>Integração: Execução média, rodam local utilizando um sandbox que emule o framework Android (Robolectric) e média confiança, uma vez que são testes que envolvem componentes de UI mas não rodam em um emulador de fato;</li>
+<li>UI: Lenta execução, é necessário rodar em um Emulador (Espresso) e alta confiança por simularem de forma mais completa o comportamento de um usuário ao interagir com um componente de UI do nosso App.</li>
+</ol>
+<p>A combinação desses tipos faz com que sua suíte de teste se torne mais robusta, deixando sua base de código mais confiável e fácil de manter. Num cenário ideal, durante o ciclo de desenvolvimento de uma feature, você rodaria os testes Unitários e de Integração frequentemente e os de UI ao final desse ciclo. Porém, nesse cenário, surgem dois problemas:</p>
+<ol type="1">
+<li>Os testes de Integração e UI costumam ter o mesmo propósito, porém o idioma utilizado na escrita dos testes e o ambiente de execução é diferente, criando assim uma duplicação de código;</li>
+<li>Caso o projeto utilize alguma ferramenta de CI, o que é muito comum, para rodar os testes de UI é desejável que seja utilizada uma device farm, como o <a href="https://firebase.google.com/docs/test-lab" target="_blank">Firebase Test Lab</a>.</li>
+</ol>
+<p>Mas e aí, como resolvemos esses problemas? Neste Codelab você vai aprender como configurar o seu projeto para ter uma pasta de testes compartilhados, onde serão criados testes de Integração e UI, utilizando apenas um idioma para ambos.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Configurando o projeto" duration="2">
+        <h2 is-upgraded>Criando a pastas de sharedTests</h2>
+<p>No arquivo <code>build.gradle</code> do seu módulo, dentro do bloco <code>android</code>, vamos adicionar <code>sharedTest</code> como um nova pasta de testes e uma pasta de <code>resources</code> para guardar a configuração do Robolectric.</p>
+<pre><code>android {
+    ...
+    sourceSets {
+        String sharedTestDir = &#39;src/sharedTest/java&#39;
+        String sharedResourceDir = &#39;src/sharedTest/resources&#39;
+
+        test {
+            java.srcDirs sharedTestDir
+            resources.srcDirs sharedResourceDir
+        }
+
+        androidTest {
+            java.srcDirs sharedTestDir
+            resources.srcDirs sharedResourceDir
+        }
+    }
+}
+</code></pre>
+<p>Essa configuração é necessária para que nossa pasta <code>sharedTest</code> seja reconhecida como válida para conter testes que vão ser rodados locais e no emulador.</p>
+<h2 is-upgraded>Incluindo resources do Android</h2>
+<p>Como utilizaremos o Robolectric para nossos testes de Integração, é necessário incluir a seguinte opção, para que o mesmos possam interagir com o framework Android:</p>
+<pre><code>android {
+    ...
+    testOptions {
+        unitTests.includeAndroidResources = true
+    }
+}
+</code></pre>
+<h2 is-upgraded>Adicionando dependências</h2>
+<p>Vamos adicionar as dependências de testes, dentro do nosso bloco <code>dependencies</code>, tanto como <code>testImplementation</code> quanto <code>androidTestImplementation</code>, para garantir que teremos as referências necessárias para rodar nos dois ambientes. Vale ressaltar que a dependência do Robolectric não será adicionada como <code>androidTestImplementation</code>, uma vez que a mesma não é necessária para esse ambiente, além de causar problemas na hora do rodar os testes no emulador.</p>
+<pre><code>dependencies {
+    testImplementation &#39;junit:junit:4.13.1&#39;
+    testImplementation &#39;androidx.test:core:1.3.0&#39;
+    testImplementation &#34;androidx.test:runner:1.3.0&#34;
+    testImplementation &#39;androidx.test:rules:1.3.0&#39;
+    testImplementation &#34;androidx.test.espresso:espresso-core:3.3.0&#34;
+    testImplementation &#34;androidx.test.espresso:espresso-contrib:3.3.0&#34;
+    testImplementation &#34;androidx.test.ext:junit:1.1.2&#34;
+    testImplementation &#34;org.robolectric:robolectric:4.4&#34;
+
+    androidTestImplementation &#39;junit:junit:4.13.1&#39;
+    androidTestImplementation &#39;androidx.test:core:1.3.0&#39;
+    androidTestImplementation &#34;androidx.test:runner:1.3.0&#34;
+    androidTestImplementation &#39;androidx.test:rules:1.3.0&#39;
+    androidTestImplementation &#34;androidx.test.espresso:espresso-core:3.3.0&#34;
+    androidTestImplementation &#34;androidx.test.espresso:espresso-contrib:3.3.0&#34;
+    androidTestImplementation &#34;androidx.test.ext:junit:1.1.2&#34;
+}
+</code></pre>
+<p>Com isso, concluímos as configurações necessárias do projeto. No próximo passo, vamos ver como escrever nossos testes.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Criando testes" duration="3">
+        <h2 is-upgraded>Criar pastas sharedTest e resources</h2>
+<p>Definimos no passo anterior duas pastas para serem utilizados: <code>sharedTest</code> e <code>resources</code>, porém ainda não fizemos a criação das mesmas. Para criá-las, basta clicar com o botão direito na pasta <code>src</code>, localizada dentro da sua pasta <code>app</code>, e criar as duas pastas. Após esse processo, seu projeto deve estar assim:</p>
+<p class="image-container"><img src="img/c2805f5c8265eb9f.png"></p>
+<h2 is-upgraded>Configurando o Robolectric</h2>
+<p>Por enquanto, o Robolectric não suporta a API 30 do Android. Além disso, para dar suporte a API 29, é necessário habilitar o Java 9 no projeto, o que não é desejável. Vamos criar dentro da pasta <code>resources</code> um arquivo chamado <code>robolectric.properties</code>, para definir a API que vamos utilizar em todos os nossos testes. O conteúdo do arquivo ficaria assim:</p>
+<pre><code>sdk=28
+</code></pre>
+<h2 is-upgraded>Runner</h2>
+<p>Vamos começar pelo <code>Runner</code> que vamos utilizar. É muito importante utilizar o <code>AndroidJUnit4</code> pois o mesmo já está preparado para delegar para a classe de <code>Runner</code> mais apropriada para o ambiente que estivermos executando nossos testes.</p>
+<pre><code>@RunWith(AndroidJUnit4::class)
+class MainActivityTest {
+    ...
+}
+</code></pre>
+<h2 is-upgraded>Escrevendo os testes</h2>
+<p>Já os testes em si, vamos criá-los como se estivessemos fazendo testes de UI. Isso é possível pois, desde a versão 4.0 do Robolectric, foi adicionado suporte tanto a <code>ActivityScenario</code>, responsável por iniciar <code>Activities</code> durante os testes, tanto como expressões de validação utilizadas no Espresso.  Logo, nossos testes ficariam assim:</p>
+<pre><code>@RunWith(AndroidJUnit4::class)
+class MainActivityTest {
+    
+    @Test
+     fun checkHelloWorldDisplayed() {
+         ActivityScenario.launch(MainActivityActivity::class.java)
+         onView(withText(&#34;Hello World!&#34;)).check(matches(isDisplayed()))
+     }
+}
+</code></pre>
+<p>E pronto, terminamos de escrever nosso teste de exemplo. Aposto que a primeira coisa que passa na sua cabeça é executar o teste né? Se executarmos o teste agora ele será executado no Emulador. Mas como eu faço pra rodar ele localmente? Vamos ver isso no próximo passo</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Rodando os testes" duration="1">
+        <p>Muito provavelmente seu projeto deve estar integrado com uma CI que já vai rodar os testes para você porém, caso você queira rodá-los manualmente, é só executar essas tasks:</p>
+<h2 is-upgraded>Locais (JUnit + Robolectric)</h2>
+<pre><code>./gradlew :app:testDebugUnitTest
+</code></pre>
+<h2 is-upgraded>Instrumentados (Emulador)</h2>
+<pre><code>./gradlew :app:connectedDebugAndroidTest
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Conclusão" duration="1">
+        <p>Chegamos ao fim desse Codelab! Nele discutimos sobre boas práticas de teste, os benefícios de ter uma suíte de testes diversa e como implementar, através de um &#34;hack&#34;, testes tanto de Integração como de UI através de uma pasta &#34;sharedTests&#34;. Espero que no futuro, a Google possa adicionar uma solução nativa para esse tipo de implementação, para evitarmos desvantagens como ter que rodar nossos testes através de tasks.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
