@@ -1,0 +1,27 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-12-01T13:03:11-03:00",
+  "id": "shared-tests",
+  "duration": 10,
+  "title": "Shared Tests",
+  "authors": "Felipe Lyra",
+  "summary": "Shared Tests",
+  "source": "shared-tests.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "android"
+  ],
+  "tags": [
+    "codelab",
+    "tests",
+    "tutorial"
+  ],
+  "feedback": "http://github.com/leanite",
+  "url": "shared-tests"
+}
