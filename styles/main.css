@@ -865,11 +865,11 @@ ul, li {
   background-image: url("/images/icons/brillo.svg");
 }
 
-.cast-bg, .chromecast-bg, .chrome-cast-bg, .nest-bg {
+.cast-bg, .chromecast-bg, .chrome-cast-bg, .nest-bg, .ferramentas-bg {
   background-color: #5f6368;
 }
 
-.codelab-card.category-cast, .codelab-card.category-chromecast, .codelab-card.category-chrome-cast, .codelab-card.category-nest {
+.codelab-card.category-cast, .codelab-card.category-chromecast, .codelab-card.category-chrome-cast, .codelab-card.category-nest, .codelab-card.category-ferramentas {
   border-bottom-color: #5f6368;
 }
 
@@ -1129,11 +1129,11 @@ ul, li {
   background-image: url("/images/icons/google-maps.svg");
 }
 
-.cast-bg, .chromecast-bg, .chrome-cast-bg, .nest-bg {
+.cast-bg, .chromecast-bg, .chrome-cast-bg, .nest-bg, .ferramentas-bg {
   background-color: #5f6368;
 }
 
-.codelab-card.category-cast, .codelab-card.category-chromecast, .codelab-card.category-chrome-cast, .codelab-card.category-nest {
+.codelab-card.category-cast, .codelab-card.category-chromecast, .codelab-card.category-chrome-cast, .codelab-card.category-nest, .codelab-card.category-ferramentas {
   border-bottom-color: #5f6368;
 }
 
@@ -1247,6 +1247,18 @@ ul, li {
 
 .kotlin-icon {
   background-image: url("/images/icons/kotlin.svg");
+}
+
+.cast-bg, .chromecast-bg, .chrome-cast-bg, .nest-bg, .ferramentas-bg {
+  background-color: #5f6368;
+}
+
+.codelab-card.category-cast, .codelab-card.category-chromecast, .codelab-card.category-chrome-cast, .codelab-card.category-nest, .codelab-card.category-ferramentas {
+  border-bottom-color: #5f6368;
+}
+
+.ferramentas-icon {
+  background-image: url("/images/icons/tools.svg");
 }
 
 #cards {
