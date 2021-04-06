@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-04-05T18:55:59-03:00",
+  "id": "conceitos-de-modularizacao",
+  "duration": 0,
+  "title": "Conceitos de modularização",
+  "authors": "Leite \u0026 PH",
+  "summary": "Conceitos de modularização",
+  "source": "conceitos-de-modularizacao.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "android"
+  ],
+  "tags": [
+    "codelab",
+    "tutorial"
+  ],
+  "feedback": "http://google.com",
+  "url": "conceitos-de-modularizacao"
+}
