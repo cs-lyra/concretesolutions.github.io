@@ -1,0 +1,180 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Trabalhando com View Binding</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="trabalhando-com-view-binding"
+                  title="Trabalhando com View Binding"
+                  environment="web"
+                  feedback-link="http://github.com/">
+    
+      <google-codelab-step label="Antes de começar" duration="3">
+        <p>Vamos começar primeiro informando que a JetBrains descontinuou o famoso plugin <code>Kotlin Android extension</code>, deixando-o, assim, obsoleto a partir da versão <a href="https://github.com/JetBrains/kotlin/releases/tag/v1.4.20-M2" target="_blank">1.4.20-M2</a>.</p>
+<h2 is-upgraded>Synthetic não é mais uma prática recomendada</h2>
+<p>O Synthetic requer menos código do que qualquer outra solução e também é extremamente fácil de usar, então por que não é mais uma prática recomendada? Existem problemas famosos com <code>kotlinx synthetic</code>, como por exemplo:</p>
+<ul>
+<li>Ao criar um nameID para seu layout, você acaba expondo esse ID globalmente para todo seu projeto.</li>
+<li>As suas views não são seguras contra nulabilidade, podendo causar exceções surpresas.</li>
+<li>E por fim, você só conseguirá utilizá-lo em uma classe Kotlin, o que pode ser um problema se estiver trabalhando em um projeto totalmente em Java ou misto.</li>
+</ul>
+<h2 is-upgraded>Opções alternativas</h2>
+<ul>
+<li>O tradicional <code>findViewById()</code> que funciona bem para Kotlin e Java.</li>
+<li>Temos a famosa library <code>Butter Knife</code>, muito utilizada em projetos Java. Mas atenção, ela recentemente foi descontinuada.</li>
+<li>E por último, e também o nosso objetivo deste tutorial, temos o <code>View Binding</code>, que é um recurso que nos permite escrever códigos mais simples. O código não chega a ser tão simples quanto o <code>kotlinx synthetic</code>, porém ainda é melhor que o <code>findViewById()</code> por conseguir nos proporcionar segurança contra nulos, layouts globais e ser funcional tanto para Java quanto para Kotlin.</li>
+</ul>
+<h3 is-upgraded>Para saber mais, acesse a documentação oficial clicando <a href="https://developer.android.com/topic/libraries/view-binding?hl=pt-br" target="_blank">aqui</a>.</h3>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Habilitando o View Binding" duration="2">
+        <p>Para habilitar o View Binding, é só adicionar a seguinte instrução no <code>build.gradle</code> do módulo que será utilizado:</p>
+<pre><code language="language-groovy" class="language-groovy">android {
+    ...
+    buildFeatures {
+       viewBinding true
+    }
+    ...
+}
+</code></pre>
+<p>Se por algum motivo você queira que algum layout do seu projeto não tenha a vinculação feita pelo <code>View Binding</code>, adicione o atributo: <code>tools:viewBindingIgnore="true"</code> no seu <code>ViewGroup</code> principal.</p>
+<pre><code language="language-xml" class="language-xml">&lt;LinearLayout
+    ...
+    tools:viewBindingIgnore=&#34;true&#34; &gt;
+    ...
+&lt;/LinearLayout&gt;
+</code></pre>
+<p>Se o <code>View Binding</code> estiver habilitado para um módulo, uma classe de binding será gerada para cada arquivo de layout XML que o módulo possui.</p>
+<p>Cada classe de binding contém referências ao ViewGroup principal e a todas as views que têm um ID.</p>
+<pre><code language="language-xml" class="language-xml">&lt;LinearLayout&gt;
+...
+&lt;TextView android:id=&#34;@+id/txtName&#34; /&gt;
+...
+&lt;/LinearLayout&gt;
+</code></pre>
+<p>O nome da classe de binding é gerado conforme o nome do XML convertido em pascal case e concatenado com a palavra binding ao final.</p>
+<p>Exemplo: <code>ActivityMainBinding</code></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Utilizando View Binding em uma Activity" duration="3">
+        <p>Toda classe de binding inclui uma função get chamada <code>root</code> que disponilbiliza uma referência direta para o ViewGroup principal do layout correspondente.</p>
+<pre><code language="language-kotlin" class="language-kotlin">private lateinit var binding: ActivityMainBinding
+
+override fun onCreate(savedInstanceState: Bundle) {
+    super.onCreate(savedInstanceState)
+    binding = ActivityMainBinding.inflate(layoutInflater)
+    setContentView(binding.root)
+
+    setupView()
+}
+
+private fun setupView() {
+    binding.txtName.text = &#34;Batman&#34;
+}    
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Utilizando View Binding em um Fragment" duration="3">
+        <p>Para configurar uma instância da classe binding em um Fragment, é preciso manter a atenção e limpar todas as referências da classe binding no <code>onDestroyView()</code>. Desta forma, evitaremos o famoso <strong>Memory Leak</strong>.</p>
+<pre><code language="language-kotlin" class="language-kotlin">private var _binding: FragmentMainBinding? = null
+
+private val binding get() = _binding!!
+
+override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+): View? {
+    _binding = FragmentMainBinding.inflate(inflater, container, false)
+    return binding.root
+}
+
+override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    
+    setupView()
+}
+
+override fun onDestroyView() {
+    super.onDestroyView()
+    _binding = null
+}
+
+private fun setupView(){
+    binding.txtName.text = &#34;Batman&#34;
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Utilizando View Binding em um ViewHolder" duration="3">
+        <p>Você só vai precisar passar o objeto da classe de binding gerado para o construtor da classe titular e se certificar de passar o ViewGroup principal para a classe pai do ViewHolder.</p>
+<p>Exemplo: <code>RecyclerView.ViewHolder(binding.root)</code></p>
+<pre><code language="language-kotlin" class="language-kotlin">class UserAdapter(private val userList: List&lt;User&gt;) : RecyclerView.Adapter&lt;UserAdapter.UserHolder&gt;() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaymentHolder {
+        val binding = RowUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return UserHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: UserHolder, position: Int) {
+        val user: User = userList[position]
+        holder.bind(user)
+    }
+
+    ...
+
+    class UserHolder(private val binding: RowUserBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(user: User) = with(binding) {
+            tvRowName.text = user.name
+        }
+    }
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Considerações finais" duration="1">
+        <p>Neste Codelab vimos que a utilização do <code>View Binding</code> nos traz facilidade e segurança de uma forma conciza e clara para o nosso dia a dia.</p>
+<p>Espero que tenham gostado e nos vemos em outro Codelab!</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
