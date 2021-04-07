@@ -1,0 +1,407 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Conceitos de modularização</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="conceitos-de-modularizacao"
+                  title="Conceitos de modularização"
+                  environment="web"
+                  feedback-link="http://google.com">
+    
+      <google-codelab-step label="Motivação" duration="0">
+        <p>Um módulo nada mais é do que um conjunto de código e e configurações de compilação que permitem dividir o projeto em unidades de diferentes funcionalidades. O projeto pode ter um ou mais módulos, e um módulo pode usar outro como dependência, de forma que cada módulo pode ser individualmente compilado, testado e <em>debuggado</em>.</p>
+<p>Com essa divisão em unidades de diferentes funcionalidades, podemos ajudar o nosso projeto a atingir princípios da engenharia que são bastante difundidos, como o princípio da responsabilidade única (S do SOLID) e o princípio da inversão de dependência (D do SOLID).</p>
+<p>Focando apenas na estrutura de um projeto, sem mencionar os ganhos de performance, a modularização pode ajudar bastante a manter as dependências e a arquitetura do projeto organizadas. É muito mais fácil violar uma regra arquitetural simplesmente importando uma classe de outro <em>package</em> na sua classe atual e seguir o seu fluxo de desenvolvimento sem pensar em uma solução melhor. Quando módulos trabalham isolados, para usar uma classe de outro módulo, devemos ou importar e assumir a dependência desse módulo, ou criar uma forma indireta de comunicação. E é exatamente isso que veremos nesse Codelab!</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Criando um módulo Android" duration="0">
+        <p>Para criar um módulo novo, devemos ir até <strong>File</strong>, depois selecionar <strong>New</strong> e finalmente <strong>New Module...</strong>.</p>
+<p class="image-container"><img src="img/e5123dfd3d2c4e39.png"></p>
+<p>Na nova janela que abriu, selecione a opção <strong>Android Library</strong>.</p>
+<p class="image-container"><img src="img/cbe3cac25dc0f866.png"></p>
+<p>Em seguida, dê um nome ao módulo a ser criado e confira se o seu package condiz com o projeto.</p>
+<p class="image-container"><img src="img/9267875e6dbabd91.png"></p>
+<p>Ao clicar em <strong>Finish</strong>, o módulo e seus arquivos serão criados no projeto!</p>
+<p class="image-container"><img src="img/36d8ec6b425b20d8.png"></p>
+<p>Alguns arquivos como <code>.gitignore</code>, <code>consumer-rules.pro</code> e <code>proguard-rules.pro</code>, assim como o diretório <code>libs</code>, podem ser dispensáveis ao módulo se tiverem as mesmas configurações que o módulo principal do projeto, ou simplesmente não tiver nenhuma necessidade de mudança. No caso do nosso exemplo, podemos remover esses arquivos sem problemas do nosso novo módulo criado.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Estrutura de um módulo" duration="0">
+        <p>O módulo que criamos possui a estrutura semelhante ao módulo principal <strong>app</strong>.</p>
+<p class="image-container"><img src="img/36d8ec6b425b20d8.png"></p>
+<p>Ele possui um arquivo <code>build.gradle</code> com as suas configurações de build e um <code>AndroidManifest.xml</code> para declarar permissões, Activities, entre outros, exatamente da mesma forma do módulo app.</p>
+<p>Especificamente sobre o <code>build.gradle</code>, é uma boa prática tornarmos comuns algumas configurações entre os módulos da aplicação. Por exemplo, se cada módulo tiver o seu próprio <code>compileSdkVersion</code>, a cada update do SDK Android nós teremos que alterar em todos os arquivos de todos os módulos. Pensando nessa e em outras possíveis alterações, é recomendado configurar o <code>build.gradle</code> raíz, o da raíz do projeto que está fora do módulo app, com todas as configurações comuns aos módulos.</p>
+<p><strong>build.gradle raíz</strong></p>
+<pre><code>buildscript {
+    ...
+}
+
+allprojects {
+    ...
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+subprojects {
+    afterEvaluate { project -&gt;
+        if (project.plugins.findPlugin(&#39;android&#39;) ?: project.plugins.findPlugin(&#39;android-library&#39;)) {
+            android {
+                compileSdkVersion 30
+                buildToolsVersion &#34;30.0.2&#34;
+
+                defaultConfig {
+                    minSdkVersion 21
+                    targetSdkVersion 30
+                    versionCode 1
+                    versionName &#34;1.0&#34;
+                    testInstrumentationRunner &#34;androidx.test.runner.AndroidJUnitRunner&#34;
+                }
+
+                buildTypes {
+                    release {
+                        minifyEnabled false
+                        proguardFiles getDefaultProguardFile(&#39;proguard-android-optimize.txt&#39;), &#39;proguard-rules.pro&#39;
+                    }
+                }
+                compileOptions {
+                    sourceCompatibility JavaVersion.VERSION_1_8
+                    targetCompatibility JavaVersion.VERSION_1_8
+                }
+                kotlinOptions {
+                    jvmTarget = &#39;1.8&#39;
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<p>Basicamente estamos incluindo um bloco que indica que para todos os subprojects, que são os módulos do nosso projeto, configurados com os plugins <code>android</code> ou <code>android-library</code>, setaremos as configurações especificadas no bloco <code>android{}</code>. É importante ressaltar que o módulo <strong>app</strong> também é um subproject.</p>
+<p>O <code>applicationId</code> configurado em um projeto deve ser único. Por esse motivo, devemos deixar somente esta configuração no <code>build.gradle</code> do módulo principal <strong>app</strong> e removê-la de todos os outros módulos.</p>
+<p><strong>app/build.gradle</strong></p>
+<pre><code>plugins {
+    id &#39;com.android.application&#39;
+    id &#39;kotlin-android&#39;
+}
+
+android {
+    defaultConfig {
+        applicationId &#34;com.github.leanite.modules&#34;
+    }
+}
+
+dependencies {
+    ...
+}
+</code></pre>
+<p>E, com a configuração geral, o nosso módulo recém criado fica com o <code>build.gradle</code> bem reduzido, apenas com as suas dependências.</p>
+<p><strong>feature/build.gradle</strong></p>
+<pre><code>plugins {
+    id &#39;com.android.library&#39;
+    id &#39;kotlin-android&#39;
+}
+
+dependencies {
+    ...
+}
+</code></pre>
+<p>Finalmente, para que o módulo <strong>app</strong> use o módulo <strong>feature</strong> como dependência, basta alterar o <code>build.gradle</code> do módulo <strong>app</strong>.</p>
+<p><strong>app/build.gradle</strong></p>
+<pre><code>plugins {
+    id &#39;com.android.application&#39;
+    id &#39;kotlin-android&#39;
+}
+
+android {
+    defaultConfig {
+        applicationId &#34;com.github.leanite.modules&#34;
+    }
+}
+
+dependencies {
+    implementation project(&#39;:feature&#39;)
+    ...
+}
+</code></pre>
+<p>Importante: o arquivo <code>settings.gradle</code> possui a configuração de inclusão de todos os módulos do projeto. Sempre devemos conferir se os módulos estão sendo corretamente referenciados nesse arquivo.</p>
+<p><strong>settings.gradle</strong></p>
+<pre><code>include &#39;:feature&#39;
+include &#39;:app&#39;
+rootProject.name = &#34;Modules&#34;
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Dependência entre os módulos" duration="0">
+        <p>Quando temos mais de um módulo no projeto, é comum surgirem partes do código de um módulo que necessitam ser usadas por outros módulos. Devemos avaliar bastante se importar um módulo como dependência de outro é o caminho mais viável, levando em conta a manutenção do código, escalabilidade, preparo para mudanças, entre outros fatores comuns na engenharia de software.</p>
+<p>Vamos supor que existam dois módulos, o <strong>módulo A</strong> e o <strong>módulo B</strong>. Se o módulo A necessita utilizar uma classe do módulo B, assim como o módulo B necessita utilizar uma classe do módulo A, é um sinal que devemos repensar a nossa implementação. Situações como essa caracterizam uma <strong>dependência circular</strong> e isso não é permitido. Se importamos o módulo B como uma dependência do módulo A é vice-versa, teremos um erro de compilação acusando dependência circular entre os módulos.</p>
+<p class="image-container"><img src="img/5d7bf0836d5d053f.png"></p>
+<p>O esquema acima ilustra a situação que descrevemos anteriormente: o módulo A possui uma parte de código que interessa ao módulo B e vice-versa. É uma prática muito comum resolver esse impasse extraindo os códigos necessários e colocándo eles em um terceiro módulo comum.</p>
+<p class="image-container"><img src="img/bfddda349b3d8dee.png"></p>
+<p>Dessa forma, o novo <strong>módulo base</strong> possui o código que interessa aos outros módulos e torna possível o seu uso tanto no módulo A quanto no módulo B. Isso significa que o módulo base pode, sem nenhum problema, ser uma dependência tanto do módulo A quanto do módulo B.</p>
+<p>Existe uma variedade de códigos que são comuns aos módulos de um projeto. Geralmente, são os códigos de serviços de API, modelos de negócio, componentes de UI, strings e dimens, extension functions, entre outros. É uma boa prática criar módulos separados para cada tipo de código que precisa ser reutilizado. Quanto mais específico for o módulo, menor a chance de ocorrer uma dependência circular, além de contribuir com a manutenção do código, escalabilidade e saúde do projeto.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Criando submódulos" duration="0">
+        <p>Em determinadas situações, é comum ser necessária a criação de submódulos em um módulo do projeto. Por exemplo, se estamos modularizando um conjunto de código comum, muitas vezes temos um módulo <strong>core</strong> com possíveis submódulos como <strong>base</strong>, <strong>network</strong>, <strong>model</strong>, entre outros.</p>
+<p>Supondo que já criamos um módulo chamado <strong>core</strong>, da mesma forma que foi feito anteriormente, vamos criar um submódulo <strong>base</strong>.</p>
+<p>Primeiro, com o módulo <strong>core</strong> selecionado, clicamos em <strong>New</strong> e, em seguida, <strong>Module</strong>. Vamos selecionar, novamente, a opção <strong>Android Library</strong>.</p>
+<p class="image-container"><img src="img/7a38f3fdd47a8fa7.png"></p>
+<p>Ao nomear o módulo, devemos manter o prefixo <code>:core</code>, o que garante que o módulo <strong>base</strong> será um submódulo do módulo <strong>core</strong>. Isso significa que o seu name será <code>:core:base</code>.</p>
+<p>Também devemos nos atentar ao <strong>package</strong> do submódulo. Por padrão, o package vem apenas com o nome do submódulo, ou seja, apenas base. É uma boa prática colocarmos o package com a mesma estrutura presente nos módulos, ou seja, <code>[package].core.base</code> e não simplesmente <code>[package].base</code>.</p>
+<p class="image-container"><img src="img/9c06eb232d7ab92.png"></p>
+<p>Feito isso, nosso submódulo está criado! É possível vê-lo dentro da estrutura do módulo <strong>core</strong> e seu import no arquivo <code>settings.gradle</code>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Comunicação entre módulos" duration="0">
+        <p>Em determinadas situações, como desenvolvedores, queremos utilizar alguma funcionalidade de um módulo, mas não queremos fazer o import completo de todas as classes e particularidades desse módulo.</p>
+<p>Vamos supor o seguinte exemplo: temos uma feature que necessita de duas validações, uma para saber se uma String é um telefone de celular válido e outra para saber se uma String é um nome completo. Vamos criar os módulos e modelar a solução da seguinte forma:</p>
+<p class="image-container"><img src="img/cd974adf973cebab.png"></p>
+<p>Interpretando o diagrama acima, temos que o módulo <strong>app</strong> tem como dependência os módulos <strong>feature</strong> e <strong>validator</strong>. O módulo <strong>validator</strong> possui, e também tem como dependência, os seus dois submódulos <strong>interface</strong> e <strong>core</strong>. O submódulo <strong>core</strong> tem como dependência o submódulo <strong>interface</strong>. Finalmente, o módulo <strong>feature</strong> tem como dependência o submódulo <strong>interface</strong> de <strong>validator</strong>.</p>
+<h2 is-upgraded>Módulo app</h2>
+<p>O módulo app apenas inicializará o Koin, já que a injeção de dependência tem um papel fundamental nessa comunicação.</p>
+<p><strong>MyApplication.kt</strong></p>
+<pre><code>class MyApplication : Application(){
+    override fun onCreate() {
+        super.onCreate()
+        startKoin{
+            androidLogger()
+            androidContext(this@MyApplication)
+            modules(appModule)
+        }
+    }
+}
+
+val appModule = listOf&lt;Module&gt;(
+    validatorModule,
+    featureModule
+)
+</code></pre>
+<h2 is-upgraded>Módulo validator</h2>
+<p>Dividimos o módulo validator em dois submódulos: core e interface. O submódulo interface tem o contrato necessário para usar um validador, enquanto o módulo core possui a lógica dos validadores.</p>
+<p>No módulo <strong>interface</strong>, temos apenas uma interface <code>Validator</code>.</p>
+<p><strong>Validator.kt</strong></p>
+<pre><code>interface Validator {
+    fun validateFullName(value: String): Boolean
+    fun validatePhone(value: String): Boolean
+}
+</code></pre>
+<p>No módulo <strong>core</strong>, temos duas classes, <code>PhoneValidator</code> e <code>FullNameValidator</code>.</p>
+<p><strong>PhoneValidator.kt</strong></p>
+<pre><code>class PhoneValidator {
+    fun isValidPhone(phone: String): Boolean =
+        phone.matches(Regex(&#34;^\\([1-9]{2}\\) 9\\d{4}-\\d{4}\$&#34;))
+}
+</code></pre>
+<p><strong>FullNameValidator.kt</strong></p>
+<pre><code>class FullNameValidator {
+    fun isFullName(name: String): Boolean {
+        return isGreaterTwoNames(splitName(name.trim())) &amp;&amp;
+                isGreaterTwoCharacters(splitName(name.trim())) &amp;&amp;
+                !hasSpecialCharacters(splitName(name.trim())) &amp;&amp;
+                !hasNumbers(splitName(name.trim()))
+    }
+
+    ...
+}
+</code></pre>
+<p>Para utilizar a implementação dessas duas classes e também implementar a interface <code>Validator</code> do submódulo interface, temos a classe <code>ValidatorImpl</code>.</p>
+<p><strong>ValidatorImpl.kt</strong></p>
+<pre><code>class ValidatorImpl(
+    private val fullNameValidator: FullNameValidator,
+    private val phoneValidator: PhoneValidator
+) : Validator {
+
+    override fun validateFullName(value: String): Boolean =
+        fullNameValidator.isFullName(value)
+
+    override fun validatePhone(value: String): Boolean =
+        phoneValidator.isValidPhone(value)
+}
+</code></pre>
+<p>Finalmente, a única coisa presente no módulo <strong>validator</strong> é o módulo de injeção do Koin.</p>
+<p><strong>ValidatorModule.kt</strong></p>
+<pre><code>val validatorModule = module {
+    single { FullNameValidator() }
+    single { PhoneValidator() }
+    single { ValidatorImpl(get(), get()) } bind Validator::class
+}
+</code></pre>
+<p>Importante reparar que é aqui nesse módulo do Koin que a magia acontece. Estamos expondo apenas uma interface de comunicação através do submódulo <strong>interface</strong>, porém a injeção de dependência garante que onde for requisitada a dependência de <code>Validator</code>, retornaremos uma instância de <code>ValidatorImpl</code>.</p>
+<h2 is-upgraded>Módulo feature</h2>
+<p>O módulo <strong>feature</strong> possui a <code>FeatureActivity</code> e o <code>FeatureViewModel</code>, além do módulo do Koin <code>FeatureModule</code>, para utilizar a validação do módulo <strong>validator</strong>.</p>
+<p>É no <code>FeatureViewModel</code> que utilizamos o módulo <strong>validator</strong> sem conhecer de fato as suas implementações. A injeção de dependência garante que será utilizada a implementação da interface <code>Validator</code> como vimos anteriormente.</p>
+<p><strong>FeatureViewModel.kt</strong></p>
+<pre><code>class FeatureViewModel(
+    private val validator: Validator
+) : ViewModel() {
+
+    fun isFullName(name: String) = validator.validateFullName(name)
+
+    fun isPhoneValid(phone: String) = validator.validatePhone(phone)
+}
+</code></pre>
+<p>Por último, temos a <code>FeatureActivity</code> e o <code>FeatureModule</code>. A <code>FeatureActivity</code> usará o <code>FeatureViewModel</code> para validar os seus campos de texto relativos ao número de telefone celular e nome completo.</p>
+<p><strong>FeatureActivity.kt</strong></p>
+<pre><code>class FeatureActivity : AppCompatActivity() {
+
+    private val viewModel: FeatureViewModel by viewModel()
+
+    ...
+
+    private fun enableConfirmButton() {
+        buttonConfirm.isEnabled = 
+            viewModel.isFullName(editTextFullName.text.toString()) &amp;&amp;
+            viewModel.isPhoneValid(editTextPhone.text.toString())
+    }
+}
+</code></pre>
+<p>O <code>FeatureModule</code> é o módulo de injeção do Koin.</p>
+<p><strong>FeatureModule.kt</strong></p>
+<pre><code>val featureModule = module {
+    viewModel { FeatureViewModel(get()) }
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Caso real: resolvendo problemas de navegação" duration="0">
+        <p>Quando temos features em diferentes módulos, um desafio muito comum que temos que enfrentar é a navegação entre fluxos de funcionalidades diferentes. Por exemplo, vamos supor um projeto em que existam duas features em dois módulos separados, Login e Tela Principal. Uma vez que um usuário passe pela tela de login e tenha sucesso, ele deveria ser redirecionado para a tela pricipal da aplicação. Como podemos fazer essa operação se a tela principal e o login estão em módulos diferentes que não devem ter dependência entre eles?</p>
+<p>A solução pode ser bem parecida com o exemplo que vimos no passo anterior. Vamos modelar uma possível solução: o módulo <strong>base</strong> possui um módulo <strong>navigation</strong> com todas as interfaces de navegação do projeto. Cada módulo de feature tem como dependência o módulo navigation e utiliza uma interface de navegação para fazer uma implementação dessa interface que navegue para suas Activities ou Fragments locais. A injeção de dependência irá garantir que cada implementação seja usada de forma correta em cada ViewModel que utilize essas interfaces nos seus construtores.</p>
+<p>É muito comum uma Activity ou Fragment necessitar de um objeto como parâmetro para que seu conteúdo seja criado de acordo com informações dinâmicas. No caso das Activities, enviamos esses objetos via <code>Intent</code> e necessitamos ter a classe dessas instâncias mapeadas na interface de navegação. Nesse ponto, devemos tomar uma decisão arquitetural quanto aos modelos da nossa aplicação: teremos um sub módulo <strong>model</strong> dentro do módulo <strong>base</strong> comum a todas as features ou utilizaremos objetos de fronteiras de módulos garantindo que cada modelo pertença apenas à sua respectiva feature?</p>
+<p><strong>sub módulo model em base</strong></p>
+<p class="image-container"><img src="img/a8f54167eb350bcd.png"></p>
+<p><strong>objetos de fronteira e models separados</strong></p>
+<p class="image-container"><img src="img/62e74659eaf1bad8.png"></p>
+<p>Para o primeiro cenário, mais simples, temos:</p>
+<p><strong>HomeNavigation.kt em base/navigation</strong></p>
+<pre><code>interface HomeNavigation {
+    fun openHome(context: Context, user: User)
+}
+</code></pre>
+<p><strong>User.kt em base/model</strong></p>
+<pre><code>@Parcelize
+data class User(
+    val id: Int,
+    val fullName: String,
+    val email: String
+)
+</code></pre>
+<p>Para o segundo cenário, utilizando os objetos de fronteiras, temos:</p>
+<p><strong>HomeNavigation.kt em base/navigation</strong></p>
+<pre><code>interface HomeNavigation {
+    fun openHome(context: Context, homeBundle: HomeBundle)
+}
+
+@Parcelize
+data class HomeBundle(
+    val userId: Int
+)
+</code></pre>
+<p><strong>User.kt em auth/model</strong></p>
+<pre><code>@Parcelize
+data class User(
+    val id: Int,
+    val fullName: String,
+    val email: String
+)
+</code></pre>
+<p>Vale ressaltar que são duas formas equivalentes de resolver o mesmo problema. Cada projeto, de acordo com as suas particularidades, pode se adequar melhor a uma das soluções propostas. Independente de qual solução arquitetural vamos adotar, o resto da solução é basicamente o mesmo!</p>
+<p>No módulo <strong>home</strong>, teremos uma implementação de <code>HomeNavigation</code> do módulo <strong>navigation</strong>.</p>
+<p><strong>HomeNavigationImpl.kt em home</strong></p>
+<pre><code>class HomeNavigationImpl : HomeNavigation {
+    override fun openHome(context: Context, user: User) {
+        val intent = Intent()
+
+        intent.putExtra(HomeActivity.USER_EXTRA, user)
+
+        context.startActivity(intent)
+    }
+}
+</code></pre>
+<p>ou</p>
+<pre><code>class HomeNavigationImpl : HomeNavigation {
+    override fun openHome(context: Context, homeBundle: HomeBundle) {
+        val intent = Intent()
+
+        intent.putExtra(HomeActivity.HOME_BUNDLE_EXTRA, homeBundle)
+
+        context.startActivity(intent)
+    }
+}
+</code></pre>
+<p>No módulo <strong>login</strong>, teremos um <code>ViewModel</code> que terá como dependência uma instância de <code>HomeNavigation</code>. A injeção de dependência irá garantir que esse <code>ViewModel</code> utilize uma instância de <code>HomeNavigationImpl</code> do módulo <strong>home</strong>.</p>
+<p><strong>LoginViewModel.kt em login</strong></p>
+<pre><code>class LoginViewModel(
+        private val homeNavigation: HomeNavigation
+) : ViewModel() {
+    fun openHome(context: Context, user: User) = homeNavigation.openHome(context, user)
+}
+</code></pre>
+<p>ou</p>
+<pre><code>class LoginViewModel(
+        private val homeNavigation: HomeNavigation
+) : ViewModel() {
+    fun openHome(context: Context, user: User) = homeNavigation.openHome(context, HomeBundle(user.id))
+}
+</code></pre>
+<p>Com o <code>ViewModel</code> implementado, basta uma <code>Activity</code> ou um <code>Fragment</code> utilizar a navegação construída.</p>
+<p><strong>LoginActivity.kt em login</strong></p>
+<pre><code>class LoginActivity : AppCompatActivity() {
+
+    private val viewModel: LoginViewModel by viewModel()
+
+    ...
+
+    override fun setUpObservables() {
+        viewModel.loginSuccess.observe(this, Observer {
+            viewModel.openHome(context, /*...*/)
+        })
+    }
+}
+</code></pre>
+<p>Não se esqueçam de implementar a injeção de dependência, como visto no passo anterior, para que tudo funcione corretamente. Uma vez que a injeção de dependência esteja correta, o problema de navegação entre features está resolvido!</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
