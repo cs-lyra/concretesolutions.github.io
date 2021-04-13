@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-12-01T13:03:11-03:00",
+  "updated": "2021-04-13T12:36:43-03:00",
   "id": "shared-tests",
   "duration": 10,
   "title": "Shared Tests",
@@ -22,6 +22,6 @@
     "tests",
     "tutorial"
   ],
-  "feedback": "http://github.com/leanite",
+  "feedback": "https://github.com/concretesolutions/concretesolutions.github.io",
   "url": "shared-tests"
 }

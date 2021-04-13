@@ -4,7 +4,7 @@ categories: Android
 tags: codelab, tutorial, tests
 status: Published
 authors: Felipe Lyra
-Feedback Link: http://github.com/leanite
+Feedback Link: https://github.com/concretesolutions/concretesolutions.github.io
 
 # Shared Tests
 
@@ -160,5 +160,5 @@ Muito provavelmente seu projeto deve estar integrado com uma CI que já vai roda
 ## Conclusão
 Duration: 1
 
-Chegamos ao fim desse Codelab! Nele discutimos sobre boas práticas de teste, os benefícios de ter uma suíte de testes diversa e como implementar, através de um “hack”, testes tanto de Integração como de UI através de uma pasta “sharedTests”. Espero que no futuro, a Google possa adicionar uma solução nativa para esse tipo de implementação, para evitarmos desvantagens como ter que rodar nossos testes através de tasks.
+Chegamos ao fim desse Codelab! Nele discutimos sobre algumas boas práticas de teste, os benefícios de ter uma suíte de testes diversa e como implementar, através de um “hack”, testes tanto de Integração como de UI através da pasta “sharedTests”. Ainda está com dúvida ou quer explorar melhor a implementação? Só acessar [esse repositório](https://github.com/lyrafelipe/shared-demo)!
 
